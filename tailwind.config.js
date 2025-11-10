@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import lineClamp from "@tailwindcss/line-clamp";
+
+export default {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./app/**/*.{js,jsx,ts,tsx}",
@@ -9,12 +11,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Montserrat'],
-        body: ['Roboto'],
+        heading: ["Montserrat"],
+        body: ["Roboto"],
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-  ],
+  plugins: [lineClamp],
 };

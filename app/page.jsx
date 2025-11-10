@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
@@ -15,8 +15,7 @@ import ContactCTA from "../components/ContactCTA";
 import ResourcesSection from "../components/ResourcesSection";
 import TechnologySection from "../components/TechnologySection";
 
-
-export default function HomePage() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [activeProfile, setActiveProfile] = useState(0);
@@ -85,6 +84,7 @@ export default function HomePage() {
     },
   ];
 
+  // ✅ Auto-rotate profiles every 10s
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveProfile((prev) => (prev + 1) % profiles.length);
@@ -92,6 +92,20 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+  // ✅ Safe browser-only logic for localStorage / window access
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      console.log("Token:", token);
+      console.log("Current URL:", window.location.href);
+
+      // Example: if you need to query an element
+      // const element = document.querySelector("#some-id");
+      // console.log(element);
+    }
+  }, []);
+
+  // ✅ Scroll logic using searchParams
   useEffect(() => {
     const scrollTo = searchParams.get("scrollTo");
     if (scrollTo) {
@@ -113,25 +127,32 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar
-  
-      />
+      <Navbar />
 
       {/* ✅ All sections use the same gradient background */}
       <div style={sectionStyle}>
         <Hero />
         {/* <CandidateCard current={profiles[activeProfile]} /> */}
-        <WhyDigiHire /> 
+        <WhyDigiHire />
         <HowItWorks />
         <TechnologySection />
         <FeaturesSection ref={featuresRef} />
         <ResultsROISnapshot />
         <ResourcesSection />
         <AboutDigiHire />
-         <ContactCTA />
+        <ContactCTA />
       </div>
 
       <FooterSection />
     </div>
+  );
+}
+
+// ✅ Main component wrapped in Suspense (fixes useSearchParams prerender issue)
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
