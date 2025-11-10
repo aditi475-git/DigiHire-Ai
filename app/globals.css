@@ -1,0 +1,21 @@
+/* ✅ Import fonts first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400&family=Poppins:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Connect next/font variables to Tailwind font names */
+:root {
+  --font-heading: 'Montserrat';
+  --font-body: 'Roboto';
+}
+
+/* ✅ Default fonts */
+body {
+  @apply font-body; /* Applies Roboto (regular) */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading; /* Applies Inter (bold headings) */
+}
