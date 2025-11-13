@@ -44,7 +44,7 @@ export default function HowItWorksPage() {
       <Navbar />
 
       {/* 🏠 Section 1: Hero Banner */}
-    <section className="flex flex-col md:flex-row-reverse items-center justify-between px-6 md:px-16 py-10 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
+    <section className=" h-[400px] flex flex-col md:flex-row-reverse items-center justify-between px-6 md:px-16 py-10 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
   {/* ✅ Right Side - Text (now visually on right side on desktop) */}
   <div className="md:w-1/2 text-center md:text-left space-y-6 z-10">
     <h1 className="text-3xl md:text-2xl font-bold leading-tight text-gray-900">

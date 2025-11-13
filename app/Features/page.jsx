@@ -28,7 +28,7 @@ export default function FeaturesPage() {
       <Navbar />
 
 {/*  Section 1: Hero (Feature Introduction) */}
-<section className="min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-400 text-white">
+<section className="h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-400 text-white">
   <div className="md:w-1/2 space-y-6">
     <h1 className="text-5xl md:text-2xl font-extrabold leading-tight ">
       Powerful Features That Make Hiring Effortless.

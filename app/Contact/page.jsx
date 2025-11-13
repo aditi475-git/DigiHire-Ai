@@ -17,24 +17,44 @@ export default function ContactPage() {
 
   const [successMessage, setSuccessMessage] = useState("");
 
+  // ✅ Update handleSubmit to send mail via API
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSuccessMessage("");
+
+    try {
+      const response = await fetch("/api/sendInquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSuccessMessage(
+          "✅ Thank you for reaching out — our team will connect with you shortly!"
+        );
+        setFormData({
+          fullName: "",
+          company: "",
+          email: "",
+          phone: "",
+          inquiryType: "",
+          message: "",
+        });
+      } else {
+        setSuccessMessage("❌ Failed to send. Try again later.");
+      }
+    } catch (error) {
+      console.error("Error sending inquiry:", error);
+      setSuccessMessage("❌ Something went wrong. Please try again.");
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSuccessMessage(
-      "✅ Thank you for reaching out — our team will connect with you shortly!"
-    );
-    setFormData({
-      fullName: "",
-      company: "",
-      email: "",
-      phone: "",
-      inquiryType: "",
-      message: "",
-    });
   };
 
   // ✅ Calendly popup state
@@ -51,12 +71,48 @@ export default function ContactPage() {
     setShowCalendly(false);
   };
 
+  // ✅ Stay Connected (Subscribe/Unsubscribe)
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setStatusMessage("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, subscribed: !isSubscribed }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubscribed(!isSubscribed);
+        setStatusMessage(
+          !isSubscribed
+            ? "Subscribed successfully! 🎉"
+            : "You have unsubscribed."
+        );
+      } else {
+        setStatusMessage("Failed to process request. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setStatusMessage("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <>
       <Navbar />
 
       {/* 🏠 Section 1: Hero Banner */}
-      <section className="bg-white py-10 px-8 md:px-20 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-10">
+      <section className=" h-[400px] bg-white py-10 px-8 md:px-20 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-10">
         {/* Left: Text Section */}
         <div className="flex-1 flex flex-col items-center md:items-start justify-center space-y-6 text-center md:text-left">
           <h1 className="text-2xl font-bold text-gray-800 leading-tight">
@@ -167,82 +223,102 @@ export default function ContactPage() {
 
       {/* 🧾 Section 3: Contact Form */}
       <section className="py-10 px-8 md:px-20 bg-white flex flex-col items-center justify-center text-center">
-        <div className="max-w-3xl w-full bg-gray-50 rounded-2xl shadow-md p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full Name *"
-              value={formData.fullName}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="text"
-              name="company"
-              placeholder="Company / Organization"
-              value={formData.company}
-              onChange={handleChange}
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email *"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone Number (optional)"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-            />
-            <select
-              name="inquiryType"
-              value={formData.inquiryType}
-              onChange={handleChange}
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-              required
-            >
-              <option value="">Select Inquiry Type</option>
-              <option value="Demo">Demo</option>
-              <option value="Support">Support</option>
-              <option value="Partnership">Partnership</option>
-              <option value="General">General</option>
-            </select>
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
-              rows="4"
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-            ></textarea>
+  <div className="max-w-3xl w-full bg-gray-50 rounded-2xl shadow-md p-8">
+    <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit(e); // keep your existing logic
 
-            <button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-full transition shadow-md min-w-[200px]"
-            >
-              Submit Inquiry
-            </button>
-          </form>
+        // Build the mailto link
+        const subject = `This is an inquiry: ${formData.inquiryType || "General"}`;
+        const body = `
+Full Name: ${formData.fullName}
+Company / Organization: ${formData.company || "N/A"}
+Email: ${formData.email}
+Phone: ${formData.phone || "N/A"}
+Inquiry Type: ${formData.inquiryType}
+Message:
+${formData.message || "N/A"}
+        `;
 
-          {successMessage && (
-            <p className="mt-4 text-green-600 font-medium">{successMessage}</p>
-          )}
-          <p className="text-sm text-gray-500 mt-4">
-            ✅ All inquiries receive a response within 24 business hours.
-            <br />🔒 Data is protected by DigiHire’s secure cloud infrastructure.
-          </p>
-        </div>
-      </section>
+        // Trigger mailto
+        window.location.href = `mailto:hr@digihireai.com?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(body)}`;
+      }}
+      className="space-y-5"
+    >
+      <input
+        type="text"
+        name="fullName"
+        placeholder="Full Name *"
+        value={formData.fullName}
+        onChange={handleChange}
+        required
+        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="text"
+        name="company"
+        placeholder="Company / Organization"
+        value={formData.company}
+        onChange={handleChange}
+        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email *"
+        value={formData.email}
+        onChange={handleChange}
+        required
+        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="text"
+        name="phone"
+        placeholder="Phone Number (optional)"
+        value={formData.phone}
+        onChange={handleChange}
+        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+      />
+      <select
+        name="inquiryType"
+        value={formData.inquiryType}
+        onChange={handleChange}
+        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+        required
+      >
+        <option value="">Select Inquiry Type</option>
+        <option value="Demo">Demo</option>
+        <option value="Support">Support</option>
+        <option value="Partnership">Partnership</option>
+        <option value="General">General</option>
+      </select>
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        value={formData.message}
+        onChange={handleChange}
+        rows="4"
+        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+
+      <button
+        type="submit"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-full transition shadow-md min-w-[200px]"
+      >
+        Submit Inquiry
+      </button>
+    </form>
+
+    {successMessage && (
+      <p className="mt-4 text-green-600 font-medium">{successMessage}</p>
+    )}
+    
+  </div>
+</section>
 
 
       {/* 🌐 Section 4: Office Locations */}
@@ -364,77 +440,85 @@ export default function ContactPage() {
 
       {/* 📧 Section 6: Subscribe or Follow Us */}
       <section className="py-10 px-8 md:px-20 bg-blue-100">
-  <h2 className="text-2xl font-bold text-gray-800 text-center mb-10">
-    Stay Connected. Stay Informed.
-  </h2>
+      <h2 className="text-2xl font-bold text-gray-800 text-center mb-10">
+        Stay Connected. Stay Informed.
+      </h2>
 
-  <div className="max-w-6xl mx-auto flex flex-col gap-6">
-    {/* Top Row: Text + Follow Us */}
-    <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4">
-      <p className="text-gray-700 text-center md:text-left">
-        📩 Get monthly insights on AI, hiring trends, and product updates.
-      </p>
-      <div className="flex items-center gap-4">
-        <p className="font-semibold text-gray-800 whitespace-nowrap">
-          Follow us on:
-        </p>
-        <div className="flex items-center gap-4 text-lg md:text-xl">
-          {/* ✅ Updated icons using your local image files */}
-          <a href="#" className="hover:opacity-80 transition">
-            <Image
-              src="/LinkedIn_logo.png"
-              alt="LinkedIn"
-              width={28}
-              height={28}
-              className="object-contain"
-            />
-          </a>
-          <a href="#" className="hover:opacity-80 transition">
-            <Image
-              src="/Youtube_logo.png"
-              alt="YouTube"
-              width={28}
-              height={28}
-              className="object-contain"
-            />
-          </a>
-          <a href="#" className="hover:opacity-80 transition">
-            <Image
-              src="/Facebook_Logo.png"
-              alt="Facebook"
-              width={28}
-              height={28}
-              className="object-contain"
-            />
-          </a>
- {/*  Added Twitter logo */}
-          <a href="#" className="hover:opacity-80 transition">
-            <Image
-              src="/Twitter logo.png"
-              alt="Twitter"
-              width={28}
-              height={28}
-              className="object-contain"
-            />
-          </a>
+      <div className="max-w-6xl mx-auto flex flex-col gap-6">
+        {/* Top Row: Text + Follow Us */}
+        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4">
+          <p className="text-gray-700 text-center md:text-left">
+            📩 Get monthly insights on AI, hiring trends, and product updates.
+          </p>
+          <div className="flex items-center gap-4">
+            <p className="font-semibold text-gray-800 whitespace-nowrap">
+              Follow us on:
+            </p>
+            <div className="flex items-center gap-4 text-lg md:text-xl">
+              <a href="#" className="hover:opacity-80 transition">
+                <Image
+                  src="/LinkedIn_logo.png"
+                  alt="LinkedIn"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+              <a href="#" className="hover:opacity-80 transition">
+                <Image
+                  src="/Youtube_logo.png"
+                  alt="YouTube"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+              <a href="#" className="hover:opacity-80 transition">
+                <Image
+                  src="/Facebook_Logo.png"
+                  alt="Facebook"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+              <a href="#" className="hover:opacity-80 transition">
+                <Image
+                  src="/Twitter logo.png"
+                  alt="Twitter"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    {/* Bottom Row: Input + Button */}
-    <div className="flex flex-wrap justify-center md:justify-start gap-4">
-      <input
-        type="email"
-        placeholder="Enter your email"
-        className="flex-1 min-w-[250px] md:min-w-[300px] p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-      />
-      <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
-  >
-        Subscribe Now
-      </button>
-    </div>
-  </div>
-</section>
+        {/* Bottom Row: Input + Button */}
+        <div className="flex flex-wrap justify-center md:justify-start gap-4">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="flex-1 min-w-[250px] md:min-w-[300px] p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            onClick={handleSubscribe}
+            className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+          >
+            {isSubscribed ? "Unsubscribe" : "Subscribe Now"}
+          </button>
+        </div>
+
+        {statusMessage && (
+          <p className="text-center text-gray-700 font-medium mt-2">
+            {statusMessage}
+          </p>
+        )}
+      </div>
+    </section>
 
 
 

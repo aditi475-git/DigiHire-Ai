@@ -5,7 +5,7 @@
   "description": "Digihire Next.js + Tailwind landing page project",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",         
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -19,6 +19,7 @@
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
     "next": "14.2.5",
+    "nodemailer": "^7.0.10",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-icons": "^5.5.0",

@@ -27,7 +27,7 @@ export default function PlatformOverviewPage() {
       <Navbar />
 
      {/* Section 1: Hero */}
-<section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 
+<section className=" h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 
 bg-gradient-to-r from-[#4A1FD1] to-[#766CF0] text-white">
 
 

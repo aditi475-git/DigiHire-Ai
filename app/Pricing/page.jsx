@@ -25,14 +25,18 @@ export default function PricingPage() {
   const closeCalendlyPopup = () => {
     setShowCalendly(false);
   };
+
+  const [currency, setCurrency] = useState("INR");
+const [billingCycle, setBillingCycle] = useState("monthly");
+
   
   return (
     <>
       <Navbar />
 
      {/* 🏠 Section 1: Hero / Pricing Banner */}
-<section className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-10 px-8 md:px-20">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-center justify-between gap-10">
+<section className="h-[400px] bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 md:px-20">
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 h-full">
     {/* Left side - text */}
     <div className="max-w-xl text-center md:text-left md:flex-1">
       <h1 className="text-4xl md:text-2xl font-bold mb-6 leading-tight">
@@ -43,47 +47,47 @@ export default function PricingPage() {
         AI-driven recruitment plans scale with your business. Choose a
         plan that fits your growth and pay only for what you use.
       </p>
+
       <div className="flex flex-wrap justify-center md:justify-start gap-4">
-        <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
->
-  Start Free Trial
-</button>
+        <button
+          className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
+        >
+          Start Free Trial
+        </button>
 
-  <div className="relative flex flex-col items-center">
-      <a
-        href="https://calendly.com/hr-digihireai/30min"
-        onClick={handleBookDemo} // ✅ opens popup instead of new tab
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
-      >
-        Book Demo
-      </a>
+        <div className="relative flex flex-col items-center">
+          <a
+            href="https://calendly.com/hr-digihireai/30min"
+            onClick={handleBookDemo} // ✅ opens popup instead of new tab
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+          >
+            Book Demo
+          </a>
 
-      {/* ✅ Calendly popup modal */}
-      {showCalendly && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
-            {/* Close button */}
-            <button
-              onClick={closeCalendlyPopup}
-              className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
-            >
-              ×
-            </button>
+          {/* ✅ Calendly popup modal */}
+          {showCalendly && (
+            <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+              <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
+                {/* Close button */}
+                <button
+                  onClick={closeCalendlyPopup}
+                  className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
+                >
+                  ×
+                </button>
 
-            {/* Calendly iframe */}
-            <iframe
-              src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
-              className="w-full h-full border-0 rounded-2xl"
-              title="Book a Demo"
-            ></iframe>
-          </div>
+                {/* Calendly iframe */}
+                <iframe
+                  src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+                  className="w-full h-full border-0 rounded-2xl"
+                  title="Book a Demo"
+                ></iframe>
+              </div>
+            </div>
+          )}
         </div>
-      )}
-    </div>
-
-
       </div>
     </div>
 
@@ -101,20 +105,74 @@ export default function PricingPage() {
 </section>
 
 
+
     {/* ⚙️ Section 2: Pricing Plans */}
+{/* ⚙️ Section 2: Pricing Plans (Updated with Currency + Billing Toggle) */}
 <section className="py-10 px-8 md:px-20 bg-gray-50">
   <div className="max-w-7xl mx-auto text-center mb-12">
     <h2 className="text-3xl md:text-2xl font-bold text-gray-800 mb-4">
       Our Plans for Every Hiring Need
     </h2>
+
+    {/* ✅ Toggles */}
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+      {/* Currency Toggle */}
+      <div className="flex rounded-full shadow-sm overflow-hidden border border-gray-300">
+        <span
+          onClick={() => setCurrency("INR")}
+          className={`cursor-pointer px-4 py-2 font-semibold transition-all duration-200 ${
+            currency === "INR"
+              ? "bg-blue-700 text-white"
+              : "bg-white text-gray-700 hover:bg-gray-100"
+          }`}
+        >
+          ₹ INR
+        </span>
+        <span
+          onClick={() => setCurrency("USD")}
+          className={`cursor-pointer px-4 py-2 font-semibold transition-all duration-200 ${
+            currency === "USD"
+              ? "bg-blue-700 text-white"
+              : "bg-white text-gray-700 hover:bg-gray-100"
+          }`}
+        >
+          $ USD
+        </span>
+      </div>
+
+      {/* Billing Cycle Toggle */}
+      <div className="flex rounded-full shadow-sm overflow-hidden border border-gray-300">
+        <span
+          onClick={() => setBillingCycle("monthly")}
+          className={`cursor-pointer px-4 py-2 font-semibold transition-all duration-200 ${
+            billingCycle === "monthly"
+              ? "bg-blue-700 text-white"
+              : "bg-white text-gray-700 hover:bg-gray-100"
+          }`}
+        >
+          Monthly
+        </span>
+        <span
+          onClick={() => setBillingCycle("yearly")}
+          className={`cursor-pointer px-4 py-2 font-semibold transition-all duration-200 ${
+            billingCycle === "yearly"
+              ? "bg-blue-700 text-white"
+              : "bg-white text-gray-700 hover:bg-gray-100"
+          }`}
+        >
+          Yearly (Save 10%)
+        </span>
+      </div>
+    </div>
   </div>
 
-  {/* ✅ Pricing Cards - Equal height and capsule buttons */}
+  {/* ✅ Pricing Data */}
   <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
     {[
       {
         title: "Starter",
-        price: "₹6,499 / month",
+        monthly: 6499,
+        yearly: 6499 * 12 * 0.9,
         desc: "Ideal for startups & small teams",
         features: [
           "120 AI Interviews / month",
@@ -129,7 +187,8 @@ export default function PricingPage() {
       },
       {
         title: "Growth",
-        price: "₹16,999 / month",
+        monthly: 16999,
+        yearly: 16999 * 12 * 0.9,
         desc: "Perfect for expanding companies",
         features: [
           "600 AI Interviews / month",
@@ -144,7 +203,8 @@ export default function PricingPage() {
       },
       {
         title: "Professional",
-        price: "₹34,999 / month",
+        monthly: 34999,
+        yearly: 34999 * 12 * 0.9,
         desc: "For agencies & large teams",
         features: [
           "2,400 AI Interviews / month",
@@ -159,7 +219,7 @@ export default function PricingPage() {
       },
       {
         title: "Enterprise",
-        price: "Custom Pricing",
+        custom: true,
         desc: "For enterprises hiring globally or in volume",
         features: [
           "Unlimited AI Interviews",
@@ -177,8 +237,31 @@ export default function PricingPage() {
         className="bg-white rounded-2xl shadow-md p-8 text-left hover:shadow-xl hover:ring-2 hover:ring-blue-300 transition-all duration-300 flex flex-col justify-between"
       >
         <div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.title}</h3>
-          <p className="text-gray-600 mb-4">{plan.price}</p>
+          <h3 className="text-2xl font-bold text-gray-800 mb-2">
+            {plan.title}
+          </h3>
+
+          {/* ✅ Dynamic Pricing */}
+          {plan.custom ? (
+            <p className="text-gray-600 mb-4 text-lg font-semibold">
+              Custom Pricing
+            </p>
+          ) : (
+            <p className="text-gray-600 mb-4 text-lg font-semibold">
+              {currency === "INR"
+                ? `₹${
+                    billingCycle === "monthly"
+                      ? plan.monthly.toLocaleString()
+                      : plan.yearly.toLocaleString()
+                  } / ${billingCycle}`
+                : `$${(
+                    (billingCycle === "monthly"
+                      ? plan.monthly
+                      : plan.yearly) / 83
+                  ).toFixed(2)} / ${billingCycle}` }
+            </p>
+          )}
+
           <p className="text-sm text-gray-500 mb-6">{plan.desc}</p>
           <ul className="text-gray-700 space-y-2 mb-6">
             {plan.features.map((f, idx) => (
@@ -187,10 +270,7 @@ export default function PricingPage() {
           </ul>
         </div>
 
-        {/* ✅ Unified Capsule Buttons */}
-        <button
-          className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap mx-auto mt-auto"
-        >
+        <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap mx-auto mt-auto">
           {plan.button}
         </button>
       </div>
@@ -344,7 +424,7 @@ export default function PricingPage() {
 </section>
 
       {/* 🌎 Section 6: Global Plans */}
-<section className="py-10 px-6 md:px-20 bg-gray-50 text-center">
+{/* <section className="py-10 px-6 md:px-20 bg-gray-50 text-center">
   <div className="max-w-5xl mx-auto mb-10">
     <h2 className="text-3xl md:text-2xl font-bold text-gray-800 mb-4">
       Built for Global Scale
@@ -404,14 +484,14 @@ export default function PricingPage() {
     <span className="font-semibold text-blue-600">localization</span>, and{" "}
     <span className="font-semibold text-blue-600">international data residency</span> support.
   </p>
-</section>
+</section> */}
 
 
 
       {/* 💬 Section 7: Testimonials */}
-      <section className="py-10 px-8 md:px-20 bg-blue-100">
+      <section className="py-10 px-8 md:px-20 bg-white">
         <div className="max-w-6xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-2xl font-bold text-gray-800 mb-8">
+          <h2 className="text-3xl md:text-2xl font-bold text-black mb-8">
             What Our Clients Say
           </h2>
         </div>
@@ -443,70 +523,72 @@ export default function PricingPage() {
       </section>
 
       {/* 💡 Section 8: FAQ (Pricing-Specific) */}
-      <section className="py-10 px-8 md:px-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-2xl font-bold text-gray-800 mb-6">
-            Frequently Asked Questions
-          </h2>
+     <section className="py-16 px-8 md:px-20 bg-blue-50">
+  <div className="max-w-4xl mx-auto text-center mb-12">
+    <h2 className="text-3xl md:text-2xl font-extrabold text-blue-900 mb-4">
+      Frequently Asked Questions
+    </h2>
+    <p className="text-gray-600 text-lg">
+      Everything you need to know about DigiHire’s plans and support.
+    </p>
+  </div>
+
+  <div className="max-w-3xl mx-auto space-y-4">
+    {[
+      "Do you offer a free trial?",
+      "What happens if I exceed my interview limit?",
+      "Can I switch plans anytime?",
+      "Are payments monthly or annual?",
+      "Do you offer refunds or pro-rated billing?",
+      "Do you provide enterprise onboarding support?",
+    ].map((question, index) => (
+      <div
+        key={index}
+        className={`border border-gray-200 rounded-2xl bg-white shadow-sm transition-all duration-300 ${
+          openIndex === index ? "shadow-md border-blue-200" : "hover:shadow-md"
+        } cursor-pointer p-6`}
+        onClick={() => toggleFAQ(index)}
+      >
+        <div className="flex justify-between items-center">
+          <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+            {question}
+          </h3>
+          <span className="text-blue-600 text-2xl font-bold">
+            {openIndex === index ? "−" : "+"}
+          </span>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          {[
-            "Do you offer a free trial?",
-            "What happens if I exceed my interview limit?",
-            "Can I switch plans anytime?",
-            "Are payments monthly or annual?",
-            "Do you offer refunds or pro-rated billing?",
-            "Do you provide enterprise onboarding support?",
-          ].map((question, index) => (
-            <div
-              key={index}
-              className="border-b border-gray-200 py-4 cursor-pointer"
-              onClick={() => toggleFAQ(index)}
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {question}
-                </h3>
-                <span className="text-blue-600 text-2xl font-bold">
-                  {openIndex === index ? "−" : "+"}
-                </span>
-              </div>
+        {openIndex === index && (
+          <p className="mt-4 text-gray-600 text-base leading-relaxed border-t border-gray-100 pt-3">
+            {
+              {
+                0: "Yes! We offer a 14-day free trial so you can explore all DigiHire features before committing.",
+                1: "If you exceed your quota, additional interviews will be billed as add-ons based on your plan.",
+                2: "Absolutely! You can upgrade, downgrade, or pause your plan at any time.",
+                3: "We support both monthly and annual billing options for maximum flexibility.",
+                4: "Refunds are not issued, but we can apply pro-rated credits for upgrades or renewals.",
+                5: "Yes, enterprise clients receive full onboarding, dedicated account managers, and training sessions.",
+              }[index]
+            }
+          </p>
+        )}
+      </div>
+    ))}
+  </div>
 
-              {openIndex === index && (
-                <p className="mt-3 text-gray-600 text-base leading-relaxed">
-                  {
-                    {
-                      0: "Yes! We offer a 14-day free trial so you can explore all DigiHire features before committing.",
-                      1: "If you exceed your quota, additional interviews will be billed as add-ons based on your plan.",
-                      2: "Absolutely! You can upgrade, downgrade, or pause your plan at any time.",
-                      3: "We support both monthly and annual billing options for maximum flexibility.",
-                      4: "Refunds are not issued, but we can apply pro-rated credits for upgrades or renewals.",
-                      5: "Yes, enterprise clients receive full onboarding, dedicated account managers, and training sessions.",
-                      
-                    }[index]
-                  }
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
+  <div className="text-center mt-14">
+    <button
+      type="button"
+      className="relative bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 w-[230px] h-[54px] mx-auto"
+    >
+      Talk to Our Sales Team
+    </button>
+  </div>
+</section>
 
-       <div className="text-center mt-10">
-        <div className="flex justify-center">
- <button
-  type="button"
-  className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
->
-  Talk to Our Sales Team
-</button>
-
-</div>
-        </div>
-      </section>
 
       {/* 📞 Section 9: Final CTA Banner */}
-     <section className="bg-blue-100 text-black-900 py-20 px-8 text-center">
+     <section className="bg-white text-black-900 py-10 px-8 text-center">
   <h2 className="text-3xl md:text-2xl font-bold mb-6">
     Start Hiring Smarter Today
   </h2>

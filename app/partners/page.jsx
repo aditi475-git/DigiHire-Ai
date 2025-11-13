@@ -1,11 +1,65 @@
 "use client";
-
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import FooterSection from "../../components/FooterSection";
 
 export default function PartnersPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    country: "",
+    email: "",
+    phone: "",
+    partnershipType: "",
+    message: "",
+  });
+
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.email || !formData.name) {
+      setStatusMessage("Please fill in your name and email.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/partner", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatusMessage("✅ Application sent successfully!");
+        setFormData({
+          name: "",
+          company: "",
+          country: "",
+          email: "",
+          phone: "",
+          partnershipType: "",
+          message: "",
+        });
+      } else {
+        setStatusMessage("❌ Failed to send. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setStatusMessage("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -278,72 +332,90 @@ className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3
 
 
         {/* 📞 Section 9: Partner Application Form */}
-        <section className="py-10 px-8 md:px-20 bg-blue-50 text-center">
-          <h2 className="text-2xl font-bold text-blue-900 mb-8">
-            Become a DigiHire Partner Today
-          </h2>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-            {/* Form */}
-            <form className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg grid gap-4 text-left">
-              <input
-                type="text"
-                placeholder="Name"
-                className="border border-gray-300 rounded-lg px-4 py-2"
-              />
-              <input
-                type="text"
-                placeholder="Company Name"
-                className="border border-gray-300 rounded-lg px-4 py-2"
-              />
-              <input
-                type="text"
-                placeholder="Country"
-                className="border border-gray-300 rounded-lg px-4 py-2"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="border border-gray-300 rounded-lg px-4 py-2"
-              />
-              <input
-                type="tel"
-                placeholder="Phone"
-                className="border border-gray-300 rounded-lg px-4 py-2"
-              />
-              <select className="border border-gray-300 rounded-lg px-4 py-2">
-                <option value="">Type of Partnership</option>
-                <option value="referral">Referral</option>
-                <option value="reseller">Reseller</option>
-                <option value="strategic">Strategic Alliance</option>
-              </select>
-              <textarea
-                placeholder="Message / Collaboration Idea"
-                className="border border-gray-300 rounded-lg px-4 py-2"
-              />
-              <button
-                type="submit"
-                className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition mt-2"
-              >
-                Submit Partnership Application
-              </button>
-              <p className="text-gray-600 text-sm mt-2 text-center">
-  Our partnership team will reach out within 48 business hours.
-</p>
+         <section className="py-10 px-8 md:px-20 bg-blue-50 text-center">
+      <h2 className="text-2xl font-bold text-blue-900 mb-8">
+        Become a DigiHire Partner Today
+      </h2>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg grid gap-4 text-left"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="border border-gray-300 rounded-lg px-4 py-2"
+          />
+          <input
+            type="text"
+            name="company"
+            placeholder="Company Name"
+            value={formData.company}
+            onChange={handleChange}
+            className="border border-gray-300 rounded-lg px-4 py-2"
+          />
+          <input
+            type="text"
+            name="country"
+            placeholder="Country"
+            value={formData.country}
+            onChange={handleChange}
+            className="border border-gray-300 rounded-lg px-4 py-2"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="border border-gray-300 rounded-lg px-4 py-2"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="border border-gray-300 rounded-lg px-4 py-2"
+          />
+          <select
+            name="partnershipType"
+            value={formData.partnershipType}
+            onChange={handleChange}
+            className="border border-gray-300 rounded-lg px-4 py-2"
+          >
+            <option value="">Type of Partnership</option>
+            <option value="referral">Referral</option>
+            <option value="reseller">Reseller</option>
+            <option value="strategic">Strategic Alliance</option>
+          </select>
+          <textarea
+            name="message"
+            placeholder="Message / Collaboration Idea"
+            value={formData.message}
+            onChange={handleChange}
+            className="border border-gray-300 rounded-lg px-4 py-2"
+          />
+          <button
+            type="submit"
+            className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition mt-2"
+          >
+            Submit Partnership Application
+          </button>
+          <p className="text-gray-600 text-sm mt-2 text-center">
+            Our partnership team will reach out within 48 business hours.
+          </p>
 
-            </form>
-
-            {/* Illustration */}
-            {/* <div className="flex-1">
-              <Image
-                src="/global-network.png"
-                alt="Global Network"
-                width={400}
-                height={400}
-                className="mx-auto"
-              />
-            </div> */}
-          </div>
-        </section>
+          {statusMessage && (
+            <p className="text-center text-sm mt-2">{statusMessage}</p>
+          )}
+        </form>
+      </div>
+    </section>
 
         {/* 🌟 Section 10: Final CTA */}
         <section className="py-10 px-8 md:px-20 bg-blue-100 text-black text-center">

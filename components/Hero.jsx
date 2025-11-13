@@ -6,11 +6,9 @@ import Link from "next/link";
 
 export default function Hero() {
   const [hovered, setHovered] = useState(false);
-   const [showCalendly, setShowCalendly] = useState(false);
+  const [showCalendly, setShowCalendly] = useState(false);
 
-   
-
-   // ✅ Open Calendly popup
+  // ✅ Open Calendly popup
   const handleBookDemo = (e) => {
     e.preventDefault(); // prevent default behavior
     setShowCalendly(true);
@@ -24,7 +22,7 @@ export default function Hero() {
   return (
     <>
       {/* 🌍 Section 1 — Empowering Future of Hiring */}
-      <section className="bg-[#0A0E2E] text-white min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-16 text-center md:text-left">
+      <section className="h-[400px] bg-[#0A0E2E] text-white py-10 md:py-2 flex flex-col md:flex-row items-center justify-center px-6 md:px-16 text-center md:text-left">
         {/* Left Text Content */}
         <div className="max-w-xl mx-auto md:mx-0 md:w-1/2">
           <h1 className="text-2xl md:text-2xl font-bold mb-6 leading-tight font-heading">
@@ -46,7 +44,7 @@ export default function Hero() {
             </button>
 
             {/* Book Demo Button */}
-             <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col items-center">
               <button
                 className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px]"
                 onMouseEnter={() => setHovered(true)}
@@ -79,33 +77,32 @@ export default function Hero() {
           </div>
         </div>
 
-         {showCalendly && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
-            {/* Close button */}
-            <button
-              onClick={closeCalendlyPopup}
-              className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
-            >
-              ×
-            </button>
+        {showCalendly && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+            <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
+              {/* Close button */}
+              <button
+                onClick={closeCalendlyPopup}
+                className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
+              >
+                ×
+              </button>
 
-            {/* Calendly iframe */}
-            <iframe
-              src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
-              className="w-full h-full border-0 rounded-2xl"
-              title="Book a Demo"
-            ></iframe>
+              {/* Calendly iframe */}
+              <iframe
+                src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+                className="w-full h-full border-0 rounded-2xl"
+                title="Book a Demo"
+              ></iframe>
+            </div>
           </div>
-        </div>
-         )}
-    
+        )}
 
         {/* 🌍 Rotating Earth GIF */}
         <div className="relative flex justify-center md:justify-end w-full md:w-1/2 mt-12 md:mt-0">
-          <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
+          <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[550px] xl:h-[550px]">
             <img
-              src="/rotating_earth1.gif"
+              src="/rotating_earth.gif"
               alt="Rotating Earth"
               className="w-full h-full object-contain"
             />
@@ -114,10 +111,10 @@ export default function Hero() {
       </section>
 
       {/* 🌟 Section 2 — AI Video Interview Section */}
-      <section className="relative py-20 bg-white text-black overflow-hidden">
+      <section className="relative py-20 md:py-24 bg-white text-black overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 px-6">
           {/* Left Side — Image */}
-          <div className="flex-1 relative w-full h-[250px] lg:h-[400px]">
+          <div className="flex-1 relative w-full h-[220px] md:h-[350px]">
             <Image
               src="/hero image .png"
               alt="Hero Image"
@@ -143,22 +140,18 @@ export default function Hero() {
             {/* ✅ Unified Button Group */}
             <div className="flex justify-center flex-wrap gap-10 relative z-10">
               {/* Explore Our Platform Button */}
-<button
-  className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body w-[200px] h-[52px] whitespace-nowrap"
->
-  <Link href="/Platform" className="w-full h-full flex items-center justify-center">
-    Explore Our Platform
-  </Link>
-</button>
+              <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body w-[200px] h-[52px] whitespace-nowrap">
+                <Link href="/Platform" className="w-full h-full flex items-center justify-center">
+                  Explore Our Platform
+                </Link>
+              </button>
 
               {/* Partner With Us Button */}
-              <button
-  className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition font-body w-[200px] h-[52px] whitespace-nowrap"
->
-  <Link href="/partners" className="w-full h-full flex items-center justify-center">
-    Partner With Us
-  </Link>
-</button>
+              <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition font-body w-[200px] h-[52px] whitespace-nowrap">
+                <Link href="/partners" className="w-full h-full flex items-center justify-center">
+                  Partner With Us
+                </Link>
+              </button>
             </div>
 
             {/* ✅ Performance Stats Section */}

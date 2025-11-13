@@ -62,7 +62,7 @@ export default function CaseStudiesPage() {
 
       <main className="bg-white text-gray-800">
       {/* 🏠 Section 1: Hero Banner */}
-<section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
+<section className=" h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
   {/* Background pattern */}
   <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
 

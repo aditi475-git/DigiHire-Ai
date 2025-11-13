@@ -140,111 +140,118 @@ export default function AboutUs() {
     A Legacy of Technology Excellence
   </h2>
 
-  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    {/* 🩵 Left Column: Logo + Text */}
-    <div className="flex flex-col justify-center items-start space-y-6">
-      <Image
-        src="/DigiHelic Logo.png"
-        alt="DigiHelic Logo"
-        width={220}
-        height={90}
-        className="mb-4"
-      />
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
 
-      <p className="text-gray-800 text-base md:text-lg leading-relaxed">
-        DigiHire is proudly built by{" "}
-        <span className="font-semibold">DigiHelic Solutions Pvt. Ltd.</span>, 
-        a premier IT and automation firm incorporated in 2019.
-        <br /><br />
-        With expertise in <strong>SAP</strong>, <strong>Oracle</strong>,{" "}
-        <strong>Salesforce</strong> and enterprise mobility solutions, 
-        DigiHelic serves clients worldwide — combining experience with innovation.
-      </p>
+    {/* 🟦 Card 1 */}
+    <div className="flex flex-col justify-between bg-white rounded-2xl p-6 shadow-md h-full">
+      <div>
+        <Image
+          src="/DigiHelic Logo.png"
+          alt="DigiHelic Logo"
+          width={220}
+          height={90}
+          className="mb-4 mx-auto md:mx-0"
+        />
 
-      <ul className="text-gray-800 text-sm md:text-base space-y-2">
-        <li>SAP Silver Certified Partner</li>
-        <li>Oracle Certified Partner</li>
-        <li>
-          Experts in Cloud, Citrix, MongoDB, PostgreSQL, React.js, .NET, Node.js,
-          Next.js, VMware, Java & AI technologies powering intelligent hiring solutions.
-        </li>
-        <li>Global presence across India, UAE & USA</li>
-      </ul>
+        <p className="text-gray-800 text-base md:text-lg leading-relaxed">
+          DigiHire is proudly built by{" "}
+          <span className="font-semibold">DigiHelic Solutions Pvt. Ltd.</span>, 
+          a premier IT and automation firm incorporated in 2019.
+          <br /><br />
+          With expertise in <strong>SAP</strong>, <strong>Oracle</strong>,{" "}
+          <strong>Salesforce</strong> and enterprise mobility solutions, 
+          DigiHelic serves clients worldwide — combining experience with innovation.
+        </p>
 
-      <p className="text-gray-600 text-sm mt-4">
-        Our strong technology foundation ensures DigiHire meets enterprise standards
-        for reliability, scalability, and support.
-      </p>
+        <ul className="text-gray-800 text-sm md:text-base space-y-2 mt-4">
+          <li>SAP Silver Certified Partner</li>
+          <li>Oracle Certified Partner</li>
+          <li>
+            Experts in Cloud, Citrix, MongoDB, PostgreSQL, React.js, .NET, Node.js,
+            Next.js, VMware, Java & AI technologies powering intelligent hiring solutions.
+          </li>
+          <li>Global presence across India, UAE & USA</li>
+        </ul>
 
-     <button
-  onClick={() => window.open("https://digihelic.com/", "_blank")}
-   className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
-  >
-  Visit DigiHelic.com
-</button>
-
-
-    </div>
-
-    {/* 🩵 Right Column: Partner Logos */}
-    <div className="flex flex-col justify-center items-center space-y-14">
-      {/* ✅ Row 1 — 3 icons centered */}
-      <div className="flex justify-center items-center gap-20">
-        <div className="flex flex-col items-center">
-          <Image src="/SAP.png" alt="SAP" width={130} height={60} className="drop-shadow-md" />
-        </div>
-
-        <div className="flex flex-col items-center">
-          <Image src="/Oracal Logo.png" alt="Oracle" width={130} height={60} className="drop-shadow-md" />
-        </div>
-
-        <div className="flex flex-col items-center">
-          <Image src="/Salesforce.png" alt="Salesforce" width={130} height={60} className="drop-shadow-md" />
-        </div>
+        <p className="text-gray-600 text-sm mt-4">
+          Our strong technology foundation ensures DigiHire meets enterprise standards
+          for reliability, scalability, and support.
+        </p>
       </div>
 
-      {/* ✅ Row 2 — 2 icons centered */}
-      <div className="flex justify-center items-center gap-20">
-       
-
-        <div className="flex flex-col items-center">
-          <Image src="/ServiceNow.png" alt="ServiceNow" width={130} height={60} className="drop-shadow-md" />
-        </div>
-
-         <div className="flex flex-col items-center">
-          <Image src="/Technology.png" alt="Technology" width={200} height={110} className="drop-shadow-md" />
-        </div>
-
-      </div>
+      <button
+        onClick={() => window.open("https://digihelic.com/", "_blank")}
+        className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-full md:w-[200px] h-[52px] whitespace-nowrap mt-6"
+      >
+        Visit DigiHelic.com
+      </button>
     </div>
+
+    {/* 🟦 Card 2 */}
+    <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-md h-full space-y-20">
+      <h3 className="text-lg font-semibold text-gray-800 mb-6">DigiHelic Services</h3>
+      <Image src="/SAP.png" alt="SAP" width={130} height={60} className="mb-6" />
+      <Image src="/Oracal Logo.png" alt="Oracle" width={130} height={60} className="mb-6" />
+      <Image src="/Salesforce.png" alt="Salesforce" width={130} height={60} className="mb-6" />
+      <Image src="/ServiceNow.png" alt="ServiceNow" width={130} height={60} className="mb-6" />
+    </div>
+
+    {/* 🟦 Card 3 */}
+    <div className="flex flex-col items-center bg-white rounded-2xl p-6 shadow-md h-full space-y-10">
+      <h3 className="text-lg font-semibold text-gray-800 mb-6">Technologies</h3>
+      <Image src="/React.png" alt="React.js" width={120} height={60} className="mb-6" />
+      <Image src="/MongoDB.png" alt="MongoDB" width={120} height={60} className="mb-6" />
+      <Image src="/Java.png" alt="Java" width={120} height={60} className="mb-6" />
+      <Image src="/Nextjs.png" alt="Next.js" width={120} height={60} className="mb-6" />
+      <Image src="/Nodejs.png" alt="Node.js" width={120} height={60} className="mb-6" />
+      <Image src="/Vercel.png" alt="Vercel" width={120} height={60} className="mb-6" />
+      <Image src="/PostgreSQL.png" alt="PostgreSQL" width={120} height={60} className="mb-6" />
+    </div>
+
   </div>
 </section>
 
 
 
+
+
       {/*  Section 5 : Global Presence */}
-     <section className="bg-blue-100 text-center py-10 px-6 md:px-20">
-  <h2 className="text-2xl md:text-2xl font-bold mb-6 text-blue-900">
-    Connecting Talent Across Continents
-  </h2>
+    <section className="bg-blue-100 py-10 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between h-[400px]">
+  {/* Left Content */}
+  <div className="text-center md:text-left md:w-1/2">
+    <h2 className="text-2xl md:text-2xl font-bold mb-4 text-blue-900">
+      Connecting Talent Across Continents
+    </h2>
 
-  <p className="text-gray-700 text-base md:text-lg max-w-3xl mx-auto mb-8">
-    From our headquarters in Pune to partnerships in North America and the Middle East, DigiHire empowers companies across time zones and industries.
-    <br />
-    Our distributed team and multi-region data centers ensure accessibility, security, and seamless collaboration.
-  </p>
+    <p className="text-gray-700 text-base md:text-lg max-w-md mx-auto md:mx-0">
+      From our headquarters in Pune to partnerships in North America and the Middle East, DigiHire empowers companies across time zones and industries.
+      <br />
+      Our distributed team and multi-region data centers ensure accessibility, security, and seamless collaboration.
+    </p>
 
-  {/* Map with glowing points */}
-  <div className="relative w-full max-w-2xl mx-auto h-[400px] mb-4">
+    {/* CTA */}
+    <div className="flex justify-center md:justify-start mt-6">
+      <Link href="/partners">
+        <button
+          className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-1 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+        >
+          Partner With Us
+        </button>
+      </Link>
+    </div>
+  </div>
+
+  {/* Right Map Section */}
+  <div className="relative w-full md:w-1/2 max-w-lg h-[400px]">
     <Image
       src="/WorldMap.png"
       alt="World Map"
       fill
-      className="object-contain"
+      className="object-contain object-center"
     />
 
     {/* Headquarters: Pune, India */}
-    <div className="absolute top-[52%] left-[60%] text-gray-800">
+    <div className="absolute top-[52%] left-[62%] text-gray-800">
       <svg
         className="w-6 h-6 text-red-500"
         viewBox="0 0 24 24"
@@ -256,7 +263,7 @@ export default function AboutUs() {
     </div>
 
     {/* Regional Offices: UAE */}
-    <div className="absolute top-[35%] left-[64%] text-gray-800">
+    <div className="absolute top-[27%] left-[66%] text-gray-800">
       <svg
         className="w-6 h-6 text-yellow-500"
         viewBox="0 0 24 24"
@@ -268,7 +275,7 @@ export default function AboutUs() {
     </div>
 
     {/* Partner Network: USA */}
-    <div className="absolute top-[34%] left-[29%] text-gray-800">
+    <div className="absolute top-[34%] left-[20%] text-gray-800">
       <svg
         className="w-6 h-6 text-blue-500"
         viewBox="0 0 24 24"
@@ -279,18 +286,8 @@ export default function AboutUs() {
       <span className="text-sm block mt-1">USA</span>
     </div>
   </div>
-
-  {/* CTA */}
-  <div className="flex justify-center">
-   <Link href="/partners">
-      <button
-        className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap mt-10 mx-auto"
-      >
-        Partner With Us
-      </button>
-    </Link>
-  </div>
 </section>
+
 
 
   {/*  Section 7: What Our Clients Say (Testimonials) */}

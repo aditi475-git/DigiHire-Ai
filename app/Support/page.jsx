@@ -60,7 +60,7 @@ export default function HelpCenterPage() {
       <Navbar />
 
       {/* 🏠 Section 1: Hero Banner */}
-      <section className="flex flex-col md:flex-row items-center justify-center text-center md:text-left px-8 md:px-20 py-24 bg-blue-100 relative overflow-hidden min-h-screen">
+<section className="flex flex-col md:flex-row items-center justify-center text-center md:text-left px-8 md:px-20 bg-blue-100 relative overflow-hidden h-[400px]">
   {/* Background pattern */}
   <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
 
@@ -74,19 +74,6 @@ export default function HelpCenterPage() {
       answers, step-by-step guides, and live support to make your
       experience smooth and successful.
     </p>
-
-    {/* <div className="flex items-center justify-center bg-white rounded-full shadow-md overflow-hidden w-full max-w-md mx-auto md:mx-0">
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="🔍 Type your question here... (e.g., How to set up AI interviews?)"
-        className="flex-1 px-4 py-3 outline-none text-gray-700"
-      />
-      <button className="bg-blue-700 text-white px-6 py-3 font-semibold">
-        Search
-      </button>
-    </div> */}
   </div>
 
   {/* Right image */}
@@ -98,6 +85,7 @@ export default function HelpCenterPage() {
     />
   </div>
 </section>
+
 
 
       {/* 🔍 Section 2: Quick Access Categories */}

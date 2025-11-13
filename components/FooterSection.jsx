@@ -11,7 +11,7 @@ export default function FooterSection() {
           <h3 className="text-xl font-bold mb-4">Company</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/about" className="hover:text-blue-400">About US</Link>
+              <Link href="/about" className="hover:text-blue-400">About us</Link>
             </li>
            
             <li>
@@ -44,11 +44,16 @@ export default function FooterSection() {
               <Link href="/Support" className="hover:text-blue-400">Help Center</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-blue-400">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-blue-400">Terms of Service</a>
-            </li>
+  <Link href="/privacy-policy" className="hover:text-blue-400">
+    Privacy Policy
+  </Link>
+</li>
+<li>
+  <Link href="/Terms-of-service" className="hover:text-blue-400">
+    Terms of Service
+  </Link>
+</li>
+
           </ul>
         </div>
 

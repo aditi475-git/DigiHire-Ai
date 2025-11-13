@@ -15,7 +15,7 @@ export default function ResourcesPage() {
 
   // ✅ Open Calendly popup
   const handleBookDemo = (e) => {
-    e.preventDefault(); // Prevent default navigation
+    e.preventDefault();
     setShowCalendly(true);
   };
 
@@ -24,22 +24,72 @@ export default function ResourcesPage() {
     setShowCalendly(false);
   };
 
-  //  Moved FAQ data array INSIDE the component
-  const faqs = [  
-    { q: "Are the resources free to access?", a: "Yes, all DigiHire Knowledge Hub resources are free to explore for registered users." },
-    { q: "Can I download the guides offline?", a: "Absolutely! Most guides and playbooks are downloadable as PDFs for offline reading." },
-    { q: "How do I attend a DigiHire webinar?", a: "You can register through our 'Webinars & Videos' section or join via email invites after subscribing." },
-    { q: "Will I receive new updates automatically?", a: "Yes! Subscribers receive monthly updates with new articles, case studies, and reports." },
-    { q: "Can I share these reports internally with my HR team?", a: "Of course! We encourage sharing insights to help your team hire smarter together." },
+  // ✅ FAQ Data
+  const faqs = [
+    {
+      q: "Are the resources free to access?",
+      a: "Yes, all DigiHire Knowledge Hub resources are free to explore for registered users.",
+    },
+    {
+      q: "Can I download the guides offline?",
+      a: "Absolutely! Most guides and playbooks are downloadable as PDFs for offline reading.",
+    },
+    {
+      q: "How do I attend a DigiHire webinar?",
+      a: "You can register through our 'Webinars & Videos' section or join via email invites after subscribing.",
+    },
+    {
+      q: "Will I receive new updates automatically?",
+      a: "Yes! Subscribers receive monthly updates with new articles, case studies, and reports.",
+    },
+    {
+      q: "Can I share these reports internally with my HR team?",
+      a: "Of course! We encourage sharing insights to help your team hire smarter together.",
+    },
   ];
 
+  // ✅ Newsletter state and logic
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  // ✅ FIXED FUNCTION NAME
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+
+    if (!email) return setMessage("Please enter a valid email.");
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/sendSubscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        setSubscribed(true);
+        setMessage("✅ Subscribed successfully!");
+      } else {
+        setMessage("❌ Failed to send. Try again later.");
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("❌ Something went wrong.");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <>
       <Navbar />
 
       {/* 🏠 Section 1: Hero — Knowledge Hub Introduction */}
-<section className="relative bg-gradient-to-br from-sky-100 via-white to-white py-10 px-8 md:px-20 overflow-hidden flex items-center justify-center">
+<section className=" h-[400px] relative bg-gradient-to-br from-sky-100 via-white to-white py-10 px-8 md:px-20 overflow-hidden flex items-center justify-center">
   <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 relative z-10 text-center md:text-left">
     {/* Left: Text Content */}
     <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left">
@@ -445,37 +495,62 @@ export default function ResourcesPage() {
       </section>
 
       {/* 📧 Section 10: Newsletter Subscription CTA */}
-      <section className="py-10 px-6 bg-blye-100 text-center">
-  <div className="max-w-3xl mx-auto">
-    <h2 className="text-2xl font-bold text-gray-800 mb-4">
-      Stay Ahead in the Future of Hiring
-    </h2>
-    <p className="mb-8 text-gray-600">
-      Get the latest HR tech insights, AI trends, and hiring strategies — straight to your inbox once a month.
-    </p>
+    <section className="py-16 px-8 text-center bg-white">
+        <h1 className="text-3xl font-bold text-blue-900 mb-6">
+          DigiHire Knowledge Hub
+        </h1>
+        <p className="max-w-3xl mx-auto text-gray-700">
+          Explore expert insights, HR automation strategies, and AI-powered hiring
+          trends to transform your recruitment process.
+        </p>
+      </section>
 
-    <form className="flex flex-col sm:flex-row justify-center items-center gap-4">
-      <input
-        type="email"
-        placeholder="📩 Enter your email address"
-        className="px-6 py-3 w-full sm:w-2/3 rounded-lg border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        required
-      />
-     <button
-  type="submit"
-      className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
-  >
+      {/* ✅ Newsletter Section (Fixed handleSubscribe usage) */}
+      <section className="py-10 px-6 bg-blue-100 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-black mb-4">
+            Stay Ahead in the Future of Hiring
+          </h2>
+          <p className="mb-8 text-black">
+            Get the latest HR tech insights, AI trends, and hiring strategies — straight
+            to your inbox once a month.
+          </p>
 
-  Subscribe Now
-</button>
+          {/* ✅ FIXED HERE */}
+          <form
+            onSubmit={handleSubscribe}
+            className="flex flex-col sm:flex-row justify-center items-center gap-4"
+          >
+            <input
+              type="email"
+              placeholder="📩 Enter your email address"
+              className="px-6 py-3 w-full sm:w-2/3 rounded-lg border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading || subscribed}
+            />
 
-    </form>
+            <button
+              type="submit"
+              className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+              disabled={loading}
+            >
+              {loading
+                ? "Sending..."
+                : subscribed
+                ? "Unsubscribe"
+                : "Subscribe Now"}
+            </button>
+          </form>
 
-    <p className="text-sm text-gray-500 mt-4">
-      We respect your privacy. No spam.
-    </p>
-  </div>
-</section>
+          {message && <p className="text-sm text-gray-600 mt-3">{message}</p>}
+
+          <p className="text-sm text-gray-500 mt-4">
+            We respect your privacy. No spam.
+          </p>
+        </div>
+      </section>
 
 
       {/* 📞 Section 11: Final CTA Banner */}
