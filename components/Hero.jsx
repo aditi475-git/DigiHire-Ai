@@ -111,10 +111,10 @@ export default function Hero() {
       </section>
 
       {/* 🌟 Section 2 — AI Video Interview Section */}
-      <section className="relative py-20 md:py-24 bg-white text-black overflow-hidden">
+      <section className="relative py-10 md:py-10 bg-white text-black overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 px-6">
           {/* Left Side — Image */}
-          <div className="flex-1 relative w-full h-[220px] md:h-[350px]">
+          <div className="flex-1 relative w-full h-[220px] md:h-[450px]">
             <Image
               src="/hero image .png"
               alt="Hero Image"

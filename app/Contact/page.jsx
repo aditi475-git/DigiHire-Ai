@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import FooterSection from "../../components/FooterSection";
+import Link from "next/link";
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -15,12 +17,49 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
-  // ✅ Update handleSubmit to send mail via API
+  // ✅ Validation function (added)
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Full Name
+    if (!formData.fullName.trim())
+      newErrors.fullName = "Full Name is required.";
+
+    // Company
+    if (!formData.company.trim())
+      newErrors.company = "Company / Organization is required.";
+
+    // Email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email))
+      newErrors.email = "Please enter a valid email address.";
+
+    // Phone (only numbers, 10 digits for India)
+    if (!/^\d{10}$/.test(formData.phone))
+      newErrors.phone = "Please enter a valid 10-digit phone number.";
+
+    // Inquiry Type
+    if (!formData.inquiryType)
+      newErrors.inquiryType = "Please select an inquiry type.";
+
+    // Message
+    if (!formData.message.trim())
+      newErrors.message = "Message is required.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // ✅ Updated handleSubmit to include validation
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccessMessage("");
+
+    // Run validation first
+    if (!validateForm()) return;
 
     try {
       const response = await fetch("/api/sendInquiry", {
@@ -43,6 +82,7 @@ export default function ContactPage() {
           inquiryType: "",
           message: "",
         });
+        setErrors({});
       } else {
         setSuccessMessage("❌ Failed to send. Try again later.");
       }
@@ -222,15 +262,24 @@ export default function ContactPage() {
       </section>
 
       {/* 🧾 Section 3: Contact Form */}
-      <section className="py-10 px-8 md:px-20 bg-white flex flex-col items-center justify-center text-center">
+<section className="py-10 px-8 md:px-20 bg-white flex flex-col items-center justify-center text-center">
   <div className="max-w-3xl w-full bg-gray-50 rounded-2xl shadow-md p-8">
     <h2 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        handleSubmit(e); // keep your existing logic
 
-        // Build the mailto link
+        // ✅ Always show all validation messages
+        const isValid = validateForm();
+        if (!isValid) {
+          // Show all errors without blocking further logic
+          setSuccessMessage(""); // clear any previous success
+          return;
+        }
+
+        handleSubmit(e);
+
         const subject = `This is an inquiry: ${formData.inquiryType || "General"}`;
         const body = `
 Full Name: ${formData.fullName}
@@ -241,69 +290,141 @@ Inquiry Type: ${formData.inquiryType}
 Message:
 ${formData.message || "N/A"}
         `;
-
-        // Trigger mailto
         window.location.href = `mailto:hr@digihireai.com?subject=${encodeURIComponent(
           subject
         )}&body=${encodeURIComponent(body)}`;
       }}
-      className="space-y-5"
+      className="space-y-5 text-left"
     >
-      <input
-        type="text"
-        name="fullName"
-        placeholder="Full Name *"
-        value={formData.fullName}
-        onChange={handleChange}
-        required
-        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-      />
-      <input
-        type="text"
-        name="company"
-        placeholder="Company / Organization"
-        value={formData.company}
-        onChange={handleChange}
-        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email *"
-        value={formData.email}
-        onChange={handleChange}
-        required
-        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-      />
-      <input
-        type="text"
-        name="phone"
-        placeholder="Phone Number (optional)"
-        value={formData.phone}
-        onChange={handleChange}
-        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-      />
-      <select
-        name="inquiryType"
-        value={formData.inquiryType}
-        onChange={handleChange}
-        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-        required
-      >
-        <option value="">Select Inquiry Type</option>
-        <option value="Demo">Demo</option>
-        <option value="Support">Support</option>
-        <option value="Partnership">Partnership</option>
-        <option value="General">General</option>
-      </select>
-      <textarea
-        name="message"
-        placeholder="Your Message"
-        value={formData.message}
-        onChange={handleChange}
-        rows="4"
-        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-      ></textarea>
+      {/* Full Name */}
+      <div>
+        <label className="block mb-1 font-medium text-gray-700">
+          Full Name <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="fullName"
+          placeholder="Full Name"
+          value={formData.fullName}
+          onChange={(e) => {
+            const value = e.target.value.replace(/\b\w/g, (c) => c.toUpperCase());
+            handleChange({ target: { name: "fullName", value } });
+          }}
+          className={`w-full p-3 rounded-lg border ${
+            errors.fullName ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-blue-500`}
+        />
+        {errors.fullName && (
+          <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+        )}
+      </div>
+
+      {/* Company */}
+      <div>
+        <label className="block mb-1 font-medium text-gray-700">
+          Company / Organization <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="company"
+          placeholder="Company / Organization"
+          value={formData.company}
+          onChange={(e) => {
+            const value = e.target.value.replace(/\b\w/g, (c) => c.toUpperCase());
+            handleChange({ target: { name: "company", value } });
+          }}
+          className={`w-full p-3 rounded-lg border ${
+            errors.company ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-blue-500`}
+        />
+        {errors.company && (
+          <p className="text-red-500 text-sm mt-1">{errors.company}</p>
+        )}
+      </div>
+
+      {/* Email */}
+      <div>
+        <label className="block mb-1 font-medium text-gray-700">
+          Email <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          className={`w-full p-3 rounded-lg border ${
+            errors.email ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-blue-500`}
+        />
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+        )}
+      </div>
+
+      {/* Phone */}
+      <div>
+        <label className="block mb-1 font-medium text-gray-700">
+          Phone Number <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="phone"
+          placeholder="Phone Number"
+          value={formData.phone}
+          onChange={handleChange}
+          className={`w-full p-3 rounded-lg border ${
+            errors.phone ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-blue-500`}
+        />
+        {errors.phone && (
+          <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+        )}
+      </div>
+
+      {/* Inquiry Type */}
+      <div>
+        <label className="block mb-1 font-medium text-gray-700">
+          Inquiry Type <span className="text-red-500">*</span>
+        </label>
+        <select
+          name="inquiryType"
+          value={formData.inquiryType}
+          onChange={handleChange}
+          className={`w-full p-3 rounded-lg border ${
+            errors.inquiryType ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-blue-500`}
+        >
+          <option value="">Select Inquiry Type</option>
+          <option value="Demo">Demo</option>
+          <option value="Support">Support</option>
+          <option value="Partnership">Partnership</option>
+          <option value="General">General</option>
+        </select>
+        {errors.inquiryType && (
+          <p className="text-red-500 text-sm mt-1">{errors.inquiryType}</p>
+        )}
+      </div>
+
+      {/* Message */}
+      <div>
+        <label className="block mb-1 font-medium text-gray-700">
+          Your Message <span className="text-red-500">*</span>
+        </label>
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          value={formData.message}
+          onChange={handleChange}
+          rows="4"
+          className={`w-full p-3 rounded-lg border ${
+            errors.message ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-blue-500`}
+        ></textarea>
+        {errors.message && (
+          <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+        )}
+      </div>
 
       <button
         type="submit"
@@ -314,17 +435,18 @@ ${formData.message || "N/A"}
     </form>
 
     {successMessage && (
-      <p className="mt-4 text-green-600 font-medium">{successMessage}</p>
+      <p className="mt-4 text-green-600 font-medium text-center">
+        {successMessage}
+      </p>
     )}
-    
   </div>
 </section>
-
 
       {/* 🌐 Section 4: Office Locations */}
       <section className="py-10 px-8 md:px-20 bg-blue-100 text-center">
         <h2 className="text-2xl font-bold text-gray-800 mb-8">
           Our Offices Around the World
+
         </h2>
 
         <div className="max-w-7xl mx-auto">
@@ -567,44 +689,17 @@ ${formData.message || "N/A"}
           ))}
         </div>
         <div className="mt-10 flex justify-center">
-          <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
-  >
-            Go to Help Center
-          </button>
+         <Link href="/Support">
+  <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap">
+    Go to Help Center
+  </button>
+</Link>
+
         </div>
       </section>
 
 
-      {/* 📍 Section 9: Map Embed (Google API Integration) */}
-      {/* <section className="relative w-full h-[500px]">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.093162260322!2d73.85674307495142!3d18.56263066837621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06b4d0a33cf%3A0xc46a4a1ff6dcf95!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style={{ border: 0, filter: "grayscale(100%)" }}
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe> */}
-
-      {/* Overlay Text & Button */}
-      {/* <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/40 text-white px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Visit Our Office</h2>
-          <p className="text-lg mb-6">
-            📍 DigiHelic Solutions Pvt. Ltd., Pune, Maharashtra, India
-          </p>
-          <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Pune%2C+Maharashtra"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition"
-          >
-            Get Directions
-          </a>
-        </div>
-      </section> */}
-
-      {/* 📞 Section 10: Final CTA – Global Connection Banner */}
+      {/* 📞 Section 8: Final CTA – Global Connection Banner */}
     <section className="py-10 px-8 md:px-20 text-center bg-blue-100 text-gray-800">
   <h2 className="text-2xl font-bold mb-4">
     Ready to Transform Your Hiring? Let’s Talk.
@@ -625,7 +720,7 @@ ${formData.message || "N/A"}
 
     <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
 >
-      Send Inquiry
+      Start Free Trial
     </button>
   </div>
 </section>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import FooterSection from "../../components/FooterSection";
+import { useRouter } from "next/navigation";
 
 export default function HelpCenterPage() {
   const [search, setSearch] = useState("");
@@ -55,9 +56,51 @@ export default function HelpCenterPage() {
     faq.q.toLowerCase().includes(search.toLowerCase())
   );
   
+  const router = useRouter();
+
+const handleBack = () => {
+  router.back();
+};
   return (
     <>
       <Navbar />
+
+      <button
+  onClick={handleBack}
+  className="
+    fixed 
+    right-4 
+    bottom-28 
+    w-12 
+    h-12 
+    rounded-full 
+    bg-white/10 
+    backdrop-blur-md 
+    shadow-lg 
+    flex 
+    items-center 
+    justify-center 
+    text-white 
+    hover:bg-white/20 
+    transition
+    z-50
+  "
+>
+  {/* Chevron Back Icon */}
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="black" 
+    strokeWidth="3" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className="w-6 h-6"
+  >
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</button>
+
 
       {/* 🏠 Section 1: Hero Banner */}
 <section className="flex flex-col md:flex-row items-center justify-center text-center md:text-left px-8 md:px-20 bg-blue-100 relative overflow-hidden h-[400px]">

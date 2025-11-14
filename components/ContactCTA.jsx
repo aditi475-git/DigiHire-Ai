@@ -15,7 +15,7 @@ export default function ContactCTA() {
   };
 
   return (
-    <section className="bg-white-100 py-12 relative">
+    <section className="bg-white-100 py-10 relative">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-2xl font-heading font-bold text-black-800 mb-4">
           Let’s Build Your Smarter Hiring Future

@@ -263,7 +263,7 @@ Our intelligent dashboards turn raw numbers into decisions that matter.
       </section>
 
       {/* ✅ Section 6: Architecture & Scalability */}
-      <section className="bg-gray-50 py-10 px-6 md:px-20 text-center flex flex-col items-center justify-center">
+      <section className="bg-white py-10 px-6 md:px-20 text-center flex flex-col items-center justify-center ">
         <h2 className="text-2xl md:text-2xl font-bold text-gray-900 mb-6">
           Enterprise Architecture Built for Scalability.
         </h2>

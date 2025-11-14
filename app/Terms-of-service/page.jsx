@@ -53,10 +53,10 @@ export default function TermsOfServicePage() {
             3. Account & User Responsibilities
           </h2>
           <ul className="list-disc ml-6 mb-8">
-            <li>✔ Provide accurate information</li>
-            <li>✔ Maintain confidentiality of login details</li>
-            <li>✔ Not misuse or reverse-engineer the platform</li>
-            <li>✔ Not upload harmful or illegal content</li>
+            <li> Provide accurate information</li>
+            <li> Maintain confidentiality of login details</li>
+            <li> Not misuse or reverse-engineer the platform</li>
+            <li> Not upload harmful or illegal content</li>
           </ul>
           <p className="mb-8">
             Accounts may be suspended for violations of these terms.
@@ -139,14 +139,26 @@ export default function TermsOfServicePage() {
           <p className="mb-8">
             info@digihelic.com <br />
             DigiHelic Solutions Pvt. Ltd., Pune, India <br />
-            Effective Date: 18th December 2025 <br />
-            Website: https://DigiHireAI.com <br />
-            Owned by: DigiHelic Solutions Pvt. Ltd. <br />
-            CIN: U72900PN2019PTC183778 <br />
-            GSTIN: 27AAHCD2149K1ZH <br />
-            Support Email: info@digihelic.com
           </p>
+          <div>
+            <h2 className="font-semibold text-black mb-2">13.Company Information</h2>
+
+            <p>
+              Website:{" "}
+              <a href="https://DigiHireAI.com" className="text-blue-700 hover:text-blue-900">
+                https://DigiHireAI.com
+              </a>
+            </p>
+
+            <p>Owned By: DigiHelic Solutions Pvt. Ltd.</p>
+            <p>CIN: U72900PN2019PTC183778</p>
+            <p>GSTIN: 27AAHCD2149K1ZH</p>
+            <p>Support Email: info@digihelic.com</p>
+          </div>
+          
         </section>
+
+        
 
         {/* CTA Section */}
   <section className="max-w-4xl mx-auto py-12 border-t border-gray-300">

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import FooterSection from "../../components/FooterSection";
+import { useRouter } from "next/navigation";
 
 export default function PartnersPage() {
   const [formData, setFormData] = useState({
@@ -17,17 +18,41 @@ export default function PartnersPage() {
   });
 
   const [statusMessage, setStatusMessage] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" })); // clear specific error
+  };
+
+  // ✅ Updated Validation: show all messages at once + detailed rules + required star fields
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = "Name is required.";
+    if (!formData.company.trim()) newErrors.company = "Company name is required.";
+
+    if (!formData.email.trim()) newErrors.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Please enter a valid email address.";
+
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
+    else if (!/^\d{10}$/.test(formData.phone))
+      newErrors.phone = "Please enter a valid 10-digit phone number.";
+
+    if (!formData.message.trim()) newErrors.message = "Message is required.";
+
+    return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.email || !formData.name) {
-      setStatusMessage("Please fill in your name and email.");
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setStatusMessage("");
       return;
     }
 
@@ -51,6 +76,7 @@ export default function PartnersPage() {
           partnershipType: "",
           message: "",
         });
+        setErrors({});
       } else {
         setStatusMessage("❌ Failed to send. Please try again.");
       }
@@ -60,10 +86,53 @@ export default function PartnersPage() {
     }
   };
 
+  const router = useRouter();
+
+const handleBack = () => {
+  router.back();
+};
+
   return (
     <>
       <Navbar />
       <main className="font-body text-gray-800">
+
+        <button
+  onClick={handleBack}
+  className="
+    fixed 
+    right-4 
+    bottom-28 
+    w-12 
+    h-12 
+    rounded-full 
+    bg-white/10 
+    backdrop-blur-md 
+    shadow-lg 
+    flex 
+    items-center 
+    justify-center 
+    text-white 
+    hover:bg-white/20 
+    transition
+    z-50
+  "
+>
+  {/* Chevron Back Icon */}
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="black" 
+    strokeWidth="3" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className="w-6 h-6"
+  >
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</button>
+
         {/* 🌐 Section 1: Hero Banner */}
         <section className="relative bg-blue-100 py-20 px-8 md:px-20 flex flex-col items-center justify-center gap-12">
           <div className="flex-1 text-center">
@@ -305,7 +374,7 @@ className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3
        
         
         {/* 🏆 Section 7: Featured Partners & Success Stories */}
-        <section className="py-10 px-8 md:px-20 bg-blue-50 text-center">
+        <section className="py-10 px-8 md:px-20 bg-white text-center">
           <h2 className="text-2xl font-bold text-blue-900 mb-8">
             Trusted by Industry Leaders
           </h2>
@@ -332,90 +401,174 @@ className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3
 
 
         {/* 📞 Section 9: Partner Application Form */}
-         <section className="py-10 px-8 md:px-20 bg-blue-50 text-center">
-      <h2 className="text-2xl font-bold text-blue-900 mb-8">
-        Become a DigiHire Partner Today
-      </h2>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-        {/* Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg grid gap-4 text-left"
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2"
-          />
-          <input
-            type="text"
-            name="company"
-            placeholder="Company Name"
-            value={formData.company}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2"
-          />
-          <input
-            type="text"
-            name="country"
-            placeholder="Country"
-            value={formData.country}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2"
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2"
-          />
-          <select
-            name="partnershipType"
-            value={formData.partnershipType}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2"
+        <section className="py-10 px-8 md:px-20 bg-blue-50 text-center">
+        <h2 className="text-2xl font-bold text-blue-900 mb-8">
+          Become a DigiHire Partner Today
+        </h2>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+          {/* Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg grid gap-4 text-left"
           >
-            <option value="">Type of Partnership</option>
-            <option value="referral">Referral</option>
-            <option value="reseller">Reseller</option>
-            <option value="strategic">Strategic Alliance</option>
-          </select>
-          <textarea
-            name="message"
-            placeholder="Message / Collaboration Idea"
-            value={formData.message}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2"
-          />
-          <button
-            type="submit"
-            className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition mt-2"
-          >
-            Submit Partnership Application
-          </button>
-          <p className="text-gray-600 text-sm mt-2 text-center">
-            Our partnership team will reach out within 48 business hours.
-          </p>
+            {/* Name */}
+            <div>
+              <label className="block font-medium text-gray-700 mb-1">
+                Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                className={`border rounded-lg px-4 py-2 w-full ${
+                  errors.name ? "border-red-500" : "border-gray-300"
+                }`}
+              />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              )}
+            </div>
 
-          {statusMessage && (
-            <p className="text-center text-sm mt-2">{statusMessage}</p>
-          )}
-        </form>
-      </div>
-    </section>
+            {/* Company */}
+            <div>
+              <label className="block font-medium text-gray-700 mb-1">
+                Company Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                value={formData.company}
+                onChange={handleChange}
+                className={`border rounded-lg px-4 py-2 w-full ${
+                  errors.company ? "border-red-500" : "border-gray-300"
+                }`}
+              />
+              {errors.company && (
+                <p className="text-red-500 text-sm mt-1">{errors.company}</p>
+              )}
+            </div>
+
+            {/* Country */}
+            <div>
+              <label className="block font-medium text-gray-700 mb-1">
+                Country
+              </label>
+              <input
+                type="text"
+                name="country"
+                placeholder="Country"
+                value={formData.country}
+                onChange={handleChange}
+                className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block font-medium text-gray-700 mb-1">
+                Email <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`border rounded-lg px-4 py-2 w-full ${
+                  errors.email ? "border-red-500" : "border-gray-300"
+                }`}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
+            </div>
+
+            {/* Phone */}
+            <div>
+              <label className="block font-medium text-gray-700 mb-1">
+                Phone Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone (10 digits)"
+                value={formData.phone}
+                onChange={handleChange}
+                className={`border rounded-lg px-4 py-2 w-full ${
+                  errors.phone ? "border-red-500" : "border-gray-300"
+                }`}
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+              )}
+            </div>
+
+            {/* Partnership Type */}
+            <div>
+              <label className="block font-medium text-gray-700 mb-1">
+                Type of Partnership
+              </label>
+              <select
+                name="partnershipType"
+                value={formData.partnershipType}
+                onChange={handleChange}
+                className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+              >
+                <option value="">Select Partnership Type</option>
+                <option value="referral">Referral</option>
+                <option value="reseller">Reseller</option>
+                <option value="strategic">Strategic Alliance</option>
+              </select>
+            </div>
+
+            {/* Message */}
+            <div>
+              <label className="block font-medium text-gray-700 mb-1">
+                Message / Collaboration Idea <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                name="message"
+                placeholder="Message / Collaboration Idea"
+                value={formData.message}
+                onChange={handleChange}
+                className={`border rounded-lg px-4 py-2 w-full ${
+                  errors.message ? "border-red-500" : "border-gray-300"
+                }`}
+              />
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition mt-2"
+            >
+              Submit Partnership Application
+            </button>
+
+            <p className="text-gray-600 text-sm mt-2 text-center">
+              Our partnership team will reach out within 48 business hours.
+            </p>
+
+            {statusMessage && (
+              <p
+                className={`text-center text-sm mt-2 ${
+                  statusMessage.includes("✅")
+                    ? "text-green-600"
+                    : "text-red-600"
+                }`}
+              >
+                {statusMessage}
+              </p>
+            )}
+          </form>
+        </div>
+      </section>
 
         {/* 🌟 Section 10: Final CTA */}
         <section className="py-10 px-8 md:px-20 bg-blue-100 text-black text-center">

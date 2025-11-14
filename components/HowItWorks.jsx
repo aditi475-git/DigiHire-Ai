@@ -27,7 +27,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-16 bg-black-50">
+    <section className="py-10 bg-black-50">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-2xl font-heading font-bold text-black-800 mb-10 -mt-6">
           From Role Creation to Hiring — Simplified.

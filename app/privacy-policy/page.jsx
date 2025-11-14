@@ -23,19 +23,15 @@ export default function PrivacyPolicyPage() {
 
       <main className="bg-white text-gray-900 min-h-screen font-body">
         {/* Header */}
-        <section className="max-w-4xl mx-auto px-6 py-10">
-          <h1 className="text-2xl font-bold mb-4">
-            Privacy Policy
-          </h1>
-          <p className="text-base mb-6">
-            This Privacy Policy incorporates and uses the defined terms in the Company’s User Agreement.
-          </p>
-        </section>
+       
 
         {/* Policy Content */}
         <section className="max-w-4xl mx-auto px-6 py-6 space-y-8">
           {/* 1. Introduction */}
           <div>
+            <h1 className="text-2xl font-bold mb-4">
+            Privacy Policy
+          </h1>
             <h2 className="font-semibold text-black mb-2">1. Introduction</h2>
             <p>
               DigiHireAI.com (“we”, “us”, “our”) is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, store, and protect personal data when you use our AI-powered recruitment platform.
@@ -47,9 +43,9 @@ export default function PrivacyPolicyPage() {
 
           {/* 2. Information We Collect */}
           <div>
-            <h2 className="font-semibold text-black mb-2">2. Information We Collect</h2>
+            <h2 className="font-semibold text-black mb-2 ">2. Information We Collect</h2>
 
-            <h3 className="font-semibold text-black mb-1">2.1 Personal Data (provided by users)</h3>
+            <h3 className="font-semibold text-black mb-1 ml-2">2.1 Personal Data (provided by users)</h3>
             <ul className="list-disc ml-6 space-y-1">
               <li>Name, email, phone number, designation, company name</li>
               <li>Resume/CV, employment details, qualifications, work history</li>
@@ -58,14 +54,14 @@ export default function PrivacyPolicyPage() {
               <li>Communication data (messages, feedback, support chats)</li>
             </ul>
 
-            <h3 className="font-semibold text-black mt-4 mb-1">2.2 Automatically Collected Data</h3>
+            <h3 className="font-semibold text-black mt-4 mb-1 ml-2">2.2 Automatically Collected Data</h3>
             <ul className="list-disc ml-6 space-y-1">
               <li>IP address, browser type, device type</li>
               <li>Usage behavior, cookies, session data</li>
               <li>Geo-location (approximate), analytics tracking</li>
             </ul>
 
-            <h3 className="font-semibold text-black mt-4 mb-1">2.3 Third-Party Data</h3>
+            <h3 className="font-semibold text-black mt-4 mb-1 ml-2">2.3 Third-Party Data</h3>
             <p>Collected when integrated with:</p>
             <ul className="list-disc ml-6 space-y-1">
               <li>Calendly, Zoom, Google Meet, Microsoft Teams</li>
@@ -76,15 +72,15 @@ export default function PrivacyPolicyPage() {
 
           {/* 3. How We Use Your Data */}
           <div>
-            <h2 className="font-semibold text-black mb-2">3. How We Use Your Data</h2>
+            <h2 className="font-semibold text-black mb-2 ">3. How We Use Your Data</h2>
             <p>We use collected data to:</p>
             <ul className="list-disc ml-6 space-y-1">
-              <li>✔ Deliver AI hiring insights and interview analysis</li>
-              <li>✔ Improve our platform, algorithms, and user experience</li>
-              <li>✔ Schedule interviews and send notifications</li>
-              <li>✔ Perform analytics, compliance, and security monitoring</li>
-              <li>✔ Process payments and subscriptions</li>
-              <li>✔ Support HR hiring, candidate screening, and recruitment activities</li>
+              <li> Deliver AI hiring insights and interview analysis</li>
+              <li> Improve our platform, algorithms, and user experience</li>
+              <li> Schedule interviews and send notifications</li>
+              <li> Perform analytics, compliance, and security monitoring</li>
+              <li> Process payments and subscriptions</li>
+              <li> Support HR hiring, candidate screening, and recruitment activities</li>
             </ul>
           </div>
 
@@ -97,7 +93,7 @@ export default function PrivacyPolicyPage() {
               <li>Resume parsing, skill extraction, experience scoring</li>
               <li>AI interview evaluation and recommendation engine</li>
             </ul>
-            <p className="italic">⚠ AI results are assistive and do not guarantee hiring decisions. Final decisions lie with employers.</p>
+            <p className="italic"> AI results are assistive and do not guarantee hiring decisions. Final decisions lie with employers.</p>
           </div>
 
           {/* 5. Data Sharing & Disclosure */}
@@ -140,10 +136,10 @@ export default function PrivacyPolicyPage() {
             <h2 className="font-semibold text-black mb-2">8. Your Rights</h2>
             <p>Users can request to:</p>
             <ul className="list-disc ml-6 space-y-1">
-              <li>✔ Access, update or delete personal data</li>
-              <li>✔ Withdraw consent</li>
-              <li>✔ Download stored information</li>
-              <li>✔ Restrict processing</li>
+              <li> Access, update or delete personal data</li>
+              <li> Withdraw consent</li>
+              <li> Download stored information</li>
+              <li> Restrict processing</li>
             </ul>
             <p className="italic">
               Requests can be sent to: <a href="mailto:info@digihelic.com" className="text-blue-700 hover:text-blue-900">info@digihelic.com</a>
@@ -177,9 +173,18 @@ export default function PrivacyPolicyPage() {
             <h2 className="font-semibold text-black mb-2">12. Contact Us</h2>
             <p>info@digihelic.com</p>
             <p>DigiHelic Solutions Pvt. Ltd., Pune, India</p>
-            <p>Effective Date: 18th December 2025</p>
-            <p>Website: <a href="https://DigiHireAI.com" className="text-blue-700 hover:text-blue-900">https://DigiHireAI.com</a></p>
-            <p>Owned by: DigiHelic Solutions Pvt. Ltd.</p>
+          </div>
+           <div>
+            <h2 className="font-semibold text-black mb-2">13.Company Information</h2>
+
+            <p>
+              Website:{" "}
+              <a href="https://DigiHireAI.com" className="text-blue-700 hover:text-blue-900">
+                https://DigiHireAI.com
+              </a>
+            </p>
+
+            <p>Owned By: DigiHelic Solutions Pvt. Ltd.</p>
             <p>CIN: U72900PN2019PTC183778</p>
             <p>GSTIN: 27AAHCD2149K1ZH</p>
             <p>Support Email: info@digihelic.com</p>

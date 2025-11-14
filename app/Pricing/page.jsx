@@ -107,7 +107,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
 
 
     {/* ⚙️ Section 2: Pricing Plans */}
-{/* ⚙️ Section 2: Pricing Plans (Updated with Currency + Billing Toggle) */}
+
 <section className="py-10 px-8 md:px-20 bg-gray-50">
   <div className="max-w-7xl mx-auto text-center mb-12">
     <h2 className="text-3xl md:text-2xl font-bold text-gray-800 mb-4">
@@ -258,7 +258,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
                     (billingCycle === "monthly"
                       ? plan.monthly
                       : plan.yearly) / 83
-                  ).toFixed(2)} / ${billingCycle}` }
+                  ).toFixed(2)} / ${billingCycle}`}
             </p>
           )}
 
@@ -278,14 +278,10 @@ const [billingCycle, setBillingCycle] = useState("monthly");
   </div>
 </section>
 
-
-
-{/* 🧩 Section 3: Add-ons & Overages */}
+{/* ✅ ADD-ON TABLE SECTION WITH CURRENCY SWITCH */}
 <section className="py-10 bg-blue-100">
   <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-    <h2 className="text-2xl font-bold text-gray-800">
-      Customize Your Plan
-    </h2>
+    <h2 className="text-2xl font-bold text-gray-800">Customize Your Plan</h2>
     <p className="text-gray-600 mt-3">
       Add flexibility as you grow — only pay for what you need.
     </p>
@@ -294,22 +290,33 @@ const [billingCycle, setBillingCycle] = useState("monthly");
   <div className="max-w-5xl mx-auto overflow-x-auto">
     <table className="min-w-full bg-white shadow-md rounded-xl overflow-hidden mx-auto text-center">
       <thead className="bg-blue-600 text-white">
-  <tr>
-    <th className="py-4 px-6 text-lg font-semibold text-center">Add-on</th>
-    <th className="py-4 px-6 text-lg font-semibold text-center">Cost / Rate</th>
-    <th className="py-4 px-6 text-lg font-semibold text-center">Details</th>
-  </tr>
-</thead>
+        <tr>
+          <th className="py-4 px-6 text-lg font-semibold text-center">Add-on</th>
+          <th className="py-4 px-6 text-lg font-semibold text-center">Cost / Rate</th>
+          <th className="py-4 px-6 text-lg font-semibold text-center">Details</th>
+        </tr>
+      </thead>
 
       <tbody className="text-gray-700">
-        {[
-          ["Extra AI Interview", "₹75 / interview", "Beyond included quota"],
-          ["Extra Recruiter Seat", "₹1,499 / user / month", "Add more recruiters anytime"],
-          ["Additional Storage", "₹125 / GB / month", "Expand cloud space instantly"],
-          ["Premium Support", "+10–25% of plan", "Faster SLAs, priority queue"],
-          ["Proctoring / Anti-Cheat", "Custom", "For verified, integrity-based assessments"],
-          ["White-label Branding", "Custom", "Add your logo, domain, and theme"],
-        ].map(([name, cost, details], i) => (
+        {(
+          currency === "INR"
+            ? [
+                ["Extra AI Interview", "₹75 / interview", "Beyond included quota"],
+                ["Extra Recruiter Seat", "₹1,499 / user / month", "Add more recruiters anytime"],
+                ["Additional Storage", "₹125 / GB / month", "Expand cloud space instantly"],
+                ["Premium Support", "+10–25% of plan", "Faster SLAs, priority queue"],
+                ["Proctoring / Anti-Cheat", "Custom", "For verified, integrity-based assessments"],
+                ["White-label Branding", "Custom", "Add your logo, domain, and theme"],
+              ]
+            : [
+                ["Extra AI Interview", "$0.90 / interview", "Beyond included quota"],
+                ["Extra Recruiter Seat", "$18 / user / month", "Add more recruiters anytime"],
+                ["Additional Storage", "$1.50 / GB / month", "Expand cloud space instantly"],
+                ["Premium Support", "+10–25% of plan", "Faster SLAs, priority queue"],
+                ["Proctoring / Anti-Cheat", "Custom", "For verified, integrity-based assessments"],
+                ["White-label Branding", "Custom", "Add your logo, domain, and theme"],
+              ]
+        ).map(([name, cost, details], i) => (
           <tr
             key={i}
             className={`border-t ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
@@ -325,11 +332,10 @@ const [billingCycle, setBillingCycle] = useState("monthly");
 
   <div className="text-center mt-10">
     <button
-  className="bg-blue-700 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full shadow-md transition min-w-[200px] text-center whitespace-nowrap"
->
-  Talk to Sales for Custom Setup
-</button>
-
+      className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition min-w-[200px] text-center whitespace-nowrap"
+    >
+      Talk to Sales for Custom Setup
+    </button>
   </div>
 </section>
 
@@ -410,16 +416,6 @@ const [billingCycle, setBillingCycle] = useState("monthly");
       </div>
     </div>
 
-    {/* Image (optional placeholder for future use)
-    <div className="flex-1 flex justify-center">
-      <Image
-        src="/roi-chart.png"
-        alt="ROI Chart"
-        width={450}
-        height={350}
-        className="rounded-lg shadow-md"
-      />
-    </div> */}
   </div>
 </section>
 
@@ -523,7 +519,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
       </section>
 
       {/* 💡 Section 8: FAQ (Pricing-Specific) */}
-     <section className="py-16 px-8 md:px-20 bg-blue-50">
+     <section className="py-10 px-8 md:px-20 bg-blue-100">
   <div className="max-w-4xl mx-auto text-center mb-12">
     <h2 className="text-3xl md:text-2xl font-extrabold text-blue-900 mb-4">
       Frequently Asked Questions

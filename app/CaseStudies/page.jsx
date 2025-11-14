@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import FooterSection from "../../components/FooterSection";
+import { useRouter } from "next/navigation";
 
 export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -38,12 +39,38 @@ export default function CaseStudiesPage() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
-    setShowForm(false);
-    alert("Thank you for sharing your experience!");
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  console.log("Form Submitted:", formData);
+
+  try {
+    const response = await fetch("/api/send-experience", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("Thank you for sharing your experience!");
+      setShowForm(false);
+
+      // Reset fields (same as your original)
+      setFormData({
+        name: "",
+        company: "",
+        designation: "",
+        experience: "",
+      });
+    } else {
+      alert("Failed to send. Please try again.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong.");
+  }
+};
+
 
   // ✅ Open Calendly popup
   const handleBookDemo = (e) => {
@@ -56,11 +83,57 @@ export default function CaseStudiesPage() {
     setShowCalendly(false);
   };
 
+   const router = useRouter();
+
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <>
       <Navbar />
 
       <main className="bg-white text-gray-800">
+
+<button
+  onClick={handleBack}
+  className="
+    fixed 
+    right-4 
+    bottom-28 
+    w-12 
+    h-12 
+    rounded-full 
+    bg-white/10 
+    backdrop-blur-md 
+    shadow-lg 
+    flex 
+    items-center 
+    justify-center 
+    text-white 
+    hover:bg-white/20 
+    transition
+    z-50
+  "
+>
+  {/* Chevron Back Icon */}
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="black" 
+    strokeWidth="3" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className="w-6 h-6"
+  >
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</button>
+
+
+
+
       {/* 🏠 Section 1: Hero Banner */}
 <section className=" h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
   {/* Background pattern */}
@@ -98,7 +171,7 @@ export default function CaseStudiesPage() {
   </div>
 </section>
         
-        {/* 📊 Section 3: Highlighted Case Studies */}
+        {/* 📊 Section 2: Highlighted Case Studies */}
        <section className="py-10 px-8 md:px-20 bg-white">
   <h2 className="text-2xl font-bold text-center mb-10 text-gray-800">
     Our Most Impactful Transformations
@@ -197,7 +270,7 @@ export default function CaseStudiesPage() {
   </div>
 </section>
 
-        {/* 📈 Section 4: Results Summary Grid */}
+        {/* 📈 Section 3: Results Summary Grid */}
         <section className="py-10 bg-blue-100 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-10">
             Proven Results Across Our Clients
@@ -226,7 +299,7 @@ export default function CaseStudiesPage() {
           </p>
         </section>
 
-       {/* 🧠 Section 5: Case Study Library */}
+       {/* 🧠 Section 4: Case Study Library */}
 <section className="py-10 px-8 md:px-20 bg-white text-center">
   <h2 className="text-2xl font-bold text-gray-800 mb-10">
     Explore All Success Stories
@@ -256,7 +329,7 @@ export default function CaseStudiesPage() {
 </section>
 
 
-        {/* 🎥 Section 6: Video Testimonials */}
+        {/* 🎥 Section :5 Video Testimonials */}
         <section className="py-10 bg-blue-100 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-10">What Our Clients Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-8 md:px-20">
@@ -274,7 +347,7 @@ export default function CaseStudiesPage() {
           </div>
         </section>
 
-        {/* 📘 Section 7: Downloadable Case Studies */}
+        {/* 📘 Section 6: Downloadable Case Studies */}
         <section className="py-10 px-8 md:px-20 text-center bg-white">
           <h2 className="text-2xl font-bold text-gray-800 mb-10">
             Download Detailed Reports
@@ -297,7 +370,7 @@ export default function CaseStudiesPage() {
 
         </section>
 
-        {/* 💬 Section 8: Testimonials Carousel */}
+        {/* 💬 Section 7: Testimonials Carousel */}
         <section className="py-10 bg-blue-100 text-center">
         <h2 className="text-2xl font-bold text-gray-800 mb-10">
           Voices of Our Clients
@@ -391,7 +464,7 @@ export default function CaseStudiesPage() {
         </div>
       )}
 
-        {/* 🌍 Section 9: Global Impact Map */}
+        {/* 🌍 Section 8: Global Impact Map */}
         <section className="py-10 px-8 md:px-20 bg-white text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-10">
             Trusted Across the Globe
@@ -399,13 +472,7 @@ export default function CaseStudiesPage() {
           <p className="text-gray-700 max-w-2xl mx-auto mb-8">
             Active clients in India, UAE, Canada, and Europe — with adoption across 12+ countries and industries like IT, BFSI, Healthcare, and Manufacturing.
           </p>
-          {/* <Image
-            src="/world-map.svg"
-            alt="Global Impact Map"
-            width={600}
-            height={300}
-            className="mx-auto"
-          /> */}
+          
         </section>
 
         {/* 📞 Section 10: Final CTA */}

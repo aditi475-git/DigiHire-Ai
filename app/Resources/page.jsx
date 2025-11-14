@@ -495,8 +495,8 @@ export default function ResourcesPage() {
       </section>
 
       {/* 📧 Section 10: Newsletter Subscription CTA */}
-    <section className="py-16 px-8 text-center bg-white">
-        <h1 className="text-3xl font-bold text-blue-900 mb-6">
+    <section className="py-16 px-8 text-center bg-blue-100">
+        <h1 className="text-2xl font-bold text-blue-900 mb-6">
           DigiHire Knowledge Hub
         </h1>
         <p className="max-w-3xl mx-auto text-gray-700">
@@ -506,7 +506,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ✅ Newsletter Section (Fixed handleSubscribe usage) */}
-      <section className="py-10 px-6 bg-blue-100 text-center">
+      <section className="py-10 px-6 bg-white text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-black mb-4">
             Stay Ahead in the Future of Hiring
@@ -554,7 +554,7 @@ export default function ResourcesPage() {
 
 
       {/* 📞 Section 11: Final CTA Banner */}
-      <section className="py-10 px-8 bg-white text-black text-center">
+      <section className="py-10 px-8 bg-blue-100 text-black text-center">
         <h2 className="text-2xl font-bold mb-4">
           Experience the Future of Hiring with DigiHire.
         </h2>

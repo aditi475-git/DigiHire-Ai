@@ -135,7 +135,7 @@ export default function AboutUs() {
   
     
 {/* Section 4: Our Parent Company */}
-<section className="bg-white py-12 px-6 md:px-20">
+<section className="bg-white py-10 px-6 md:px-20">
   <h2 className="text-2xl md:text-2xl font-bold mb-12 text-center text-black-900">
     A Legacy of Technology Excellence
   </h2>
@@ -290,7 +290,7 @@ export default function AboutUs() {
 
 
 
-  {/*  Section 7: What Our Clients Say (Testimonials) */}
+  {/*  Section 6: What Our Clients Say (Testimonials) */}
 <section className="bg-white py-10 px-6 md:px-20 text-center">
   <h2 className="text-2xl md:text-2xl font-bold mb-6 text-black-900">
 
@@ -332,16 +332,17 @@ export default function AboutUs() {
 
   {/* CTA */}
   <div className="mt-12 flex justify-center">
-    <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
-  >
-  See More Success Stories
-</button>
+<Link href="/CaseStudies">
+  <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap">
+    See More Success Stories
+  </button>
+</Link>
 
   </div>
 </section>
 
 
-      {/*  Section 9: Final CTA Banner */}
+      {/*  Section 7: Final CTA Banner */}
       <section className="bg-blue-100 py-10 px-6 md:px-20 text-center text-black-600">
        <h2 className="text-2xl md:text-2xl font-bold mb-6 text-black-900">
 

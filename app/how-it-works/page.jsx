@@ -314,7 +314,7 @@ export default function HowItWorksPage() {
 <section className="py-10 px-6 md:px-16 bg-white-100">
   <div className="flex flex-col md:flex-row items-center justify-between text-left">
     {/* ✅ Left Side — Text Content */}
-    <div className="md:w-1/2 space-y-6">
+    <div className="md:w-1/2 space-y-10">
       <h2 className="text-2xl font-bold text-gray-900">
         Constant Improvement Through Feedback.
       </h2>

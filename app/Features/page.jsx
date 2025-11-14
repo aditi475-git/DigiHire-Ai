@@ -57,8 +57,8 @@ export default function FeaturesPage() {
     <Image
       src="/Dashboard animation .png"
       alt="DigiHire Dashboard Illustration"
-      width={550}
-      height={400}
+      width={400}
+      height={200}
       className="rounded-2xl shadow-lg"
     />
   </div>

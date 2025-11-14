@@ -11,7 +11,7 @@ export default function ResultsSnapshot() {
   ];
 
   return (
-<section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-16 py-14 bg-blue-100 to-white">
+<section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-16 py-10 bg-blue-100 to-white">
 
   {/* ✅ Added Header Text */}
   <div className="col-span-1 md:col-span-2 text-center mb-10">

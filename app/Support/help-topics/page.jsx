@@ -126,7 +126,7 @@ export default function MoreHelpTopicsPage() {
           href="mailto:hr@digihireai.com"
           className="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-full shadow-md transition"
         >
-          Contact Support at hr@digihireai.com
+          Contact Support
         </a>
       </section>
 
