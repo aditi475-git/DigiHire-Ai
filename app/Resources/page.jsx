@@ -89,11 +89,12 @@ export default function ResourcesPage() {
       <Navbar />
 
       {/* 🏠 Section 1: Hero — Knowledge Hub Introduction */}
-<section className=" h-[400px] relative bg-gradient-to-br from-sky-100 via-white to-white py-10 px-8 md:px-20 overflow-hidden flex items-center justify-center">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 relative z-10 text-center md:text-left">
+{/* Desktop Section */}
+<section className="hidden md:flex h-[400px] relative bg-gradient-to-br from-sky-100 via-white to-white py-10 px-20 overflow-hidden items-center justify-center">
+  <div className="max-w-7xl mx-auto flex flex-row items-center justify-between gap-12 relative z-10 text-left">
     {/* Left: Text Content */}
-    <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left">
-      <h1 className="text-4xl md:text-2xl font-bold text-gray-800 mb-4">
+    <div className="flex-1 flex flex-col items-start justify-center text-left">
+      <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Learn. Innovate. Hire Smarter.
       </h1>
       <p className="text-lg text-gray-700 mb-6 leading-relaxed max-w-2xl">
@@ -106,7 +107,7 @@ export default function ResourcesPage() {
         guides on AI in hiring, HR automation, and digital transformation.
       </p>
 
-      <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+      <div className="flex flex-wrap justify-start gap-4 mt-6">
         <button
           type="button"
           className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
@@ -124,7 +125,7 @@ export default function ResourcesPage() {
     </div>
 
     {/* Right: Image */}
-    <div className="flex-1 flex justify-center md:justify-end">
+    <div className="flex-1 flex justify-end">
       <img
         src="/Modern illustration .png"
         alt="Modern Illustration"
@@ -133,6 +134,54 @@ export default function ResourcesPage() {
     </div>
   </div>
 </section>
+
+{/* Mobile Section */}
+<section className="block md:hidden h-auto py-10 px-6 bg-gradient-to-br from-sky-100 via-white to-white overflow-hidden flex flex-col items-center justify-center">
+  <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-8 text-center">
+    {/* Image First on Mobile */}
+    <div className="flex justify-center w-full">
+      <img
+        src="/Modern illustration .png"
+        alt="Modern Illustration"
+        className="w-full max-w-md h-auto object-contain"
+      />
+    </div>
+
+    {/* Text Content */}
+    <div className="flex flex-col items-center text-center space-y-4">
+      <h1 className="text-2xl font-bold text-gray-800">
+        Learn. Innovate. Hire Smarter.
+      </h1>
+      <p className="text-lg text-gray-700 leading-relaxed max-w-md">
+        Explore insights, research, and best practices that help global
+        teams simplify hiring, improve fairness, and scale recruitment
+        intelligently with DigiHire.
+      </p>
+      <p className="text-gray-600 max-w-md">
+        Stay ahead of the curve with expert articles, case studies, and
+        guides on AI in hiring, HR automation, and digital transformation.
+      </p>
+
+      {/* Buttons */}
+      <div className="flex flex-col gap-4 mt-6 w-full items-center">
+        <button
+          type="button"
+          className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+        >
+          Explore All Resources
+        </button>
+
+        <button
+          type="button"
+          className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap flex items-center justify-center"
+        >
+          Subscribe for Updates
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 

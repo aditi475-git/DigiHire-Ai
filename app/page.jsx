@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-// import CandidateCard from "../components/CandidateCard";
+import CandidateCard from "../components/CandidateCard";
 import FeaturesSection from "../components/FeaturesSection";
 import FooterSection from "../components/FooterSection";
 import WhyDigiHire from "../components/WhyDigiHire";

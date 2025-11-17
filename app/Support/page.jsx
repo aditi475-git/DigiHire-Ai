@@ -102,14 +102,14 @@ const handleBack = () => {
 </button>
 
 
-      {/* 🏠 Section 1: Hero Banner */}
-<section className="flex flex-col md:flex-row items-center justify-center text-center md:text-left px-8 md:px-20 bg-blue-100 relative overflow-hidden h-[400px]">
+      {/* Desktop Section */}
+<section className="hidden md:flex flex-col md:flex-row items-center justify-center text-left px-20 bg-blue-100 relative overflow-hidden h-[400px]">
   {/* Background pattern */}
   <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
 
-  {/* Left content (text + search) */}
-  <div className="z-10 max-w-2xl w-full md:w-1/2">
-    <h1 className="text-3xl md:text-2xl font-bold mb-4 text-blue-900">
+  {/* Left content (text) */}
+  <div className="z-10 max-w-2xl w-full md:w-1/2 text-left">
+    <h1 className="text-2xl md:text-2xl font-bold mb-4 text-blue-900">
       How Can We Help You Today?
     </h1>
     <p className="text-lg mb-6 text-gray-700">
@@ -120,14 +120,39 @@ const handleBack = () => {
   </div>
 
   {/* Right image */}
-  <div className="z-10 mt-10 md:mt-0 md:ml-12 flex justify-center md:justify-end w-full md:w-1/2">
+  <div className="z-10 mt-0 md:ml-12 flex justify-end w-full md:w-1/2">
     <img
       src="/support agent.png"
       alt="Support Agent"
-      className="w-[320px] md:w-[420px] lg:w-[480px] object-contain drop-shadow-lg"
+      className="w-[420px] lg:w-[480px] object-contain drop-shadow-lg"
     />
   </div>
 </section>
+
+{/* Mobile Section */}
+<section className="block md:hidden flex flex-col items-center justify-center text-center px-8 bg-blue-100 relative overflow-hidden h-auto py-10">
+  {/* Image first on mobile */}
+  <div className="flex justify-center w-full mb-6">
+    <img
+      src="/support agent.png"
+      alt="Support Agent"
+      className="w-[320px] sm:w-[360px] object-contain drop-shadow-lg"
+    />
+  </div>
+
+  {/* Text second on mobile */}
+  <div className="max-w-md text-center w-full">
+    <h1 className="text-2xl font-bold mb-4 text-blue-900">
+      How Can We Help You Today?
+    </h1>
+    <p className="text-lg text-gray-700">
+      Whether you’re exploring DigiHire or already using it, find instant
+      answers, step-by-step guides, and live support to make your
+      experience smooth and successful.
+    </p>
+  </div>
+</section>
+
 
 
 

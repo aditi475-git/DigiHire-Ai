@@ -34,11 +34,11 @@ const [billingCycle, setBillingCycle] = useState("monthly");
     <>
       <Navbar />
 
-     {/* 🏠 Section 1: Hero / Pricing Banner */}
-<section className="h-[400px] bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 md:px-20">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 h-full">
+    {/* Desktop Section */}
+<section className="hidden md:flex h-[400px] bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 md:px-20">
+  <div className="max-w-7xl mx-auto flex flex-row items-center justify-between gap-10 h-full">
     {/* Left side - text */}
-    <div className="max-w-xl text-center md:text-left md:flex-1">
+    <div className="max-w-xl text-left md:flex-1">
       <h1 className="text-4xl md:text-2xl font-bold mb-6 leading-tight">
         Flexible Pricing for Every Stage of Hiring
       </h1>
@@ -48,7 +48,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
         plan that fits your growth and pay only for what you use.
       </p>
 
-      <div className="flex flex-wrap justify-center md:justify-start gap-4">
+      <div className="flex flex-wrap gap-4">
         <button
           className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
         >
@@ -58,7 +58,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
         <div className="relative flex flex-col items-center">
           <a
             href="https://calendly.com/hr-digihireai/30min"
-            onClick={handleBookDemo} // ✅ opens popup instead of new tab
+            onClick={handleBookDemo}
             target="_blank"
             rel="noopener noreferrer"
             className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
@@ -66,19 +66,16 @@ const [billingCycle, setBillingCycle] = useState("monthly");
             Book Demo
           </a>
 
-          {/* ✅ Calendly popup modal */}
+          {/* Calendly popup modal */}
           {showCalendly && (
             <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
               <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
-                {/* Close button */}
                 <button
                   onClick={closeCalendlyPopup}
                   className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
                 >
                   ×
                 </button>
-
-                {/* Calendly iframe */}
                 <iframe
                   src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
                   className="w-full h-full border-0 rounded-2xl"
@@ -92,7 +89,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
     </div>
 
     {/* Right side - illustration */}
-    <div className="flex justify-center md:justify-end md:flex-1">
+    <div className="flex justify-end md:flex-1">
       <Image
         src="/pricing-illustration.png"
         alt="Pricing Illustration"
@@ -104,7 +101,68 @@ const [billingCycle, setBillingCycle] = useState("monthly");
   </div>
 </section>
 
+{/* Mobile Section */}
+<section className="flex md:hidden flex-col items-center justify-center py-10 px-6 bg-gradient-to-r from-blue-600 to-cyan-500 text-white space-y-8">
+  {/* Image first */}
+  <div className="w-full flex justify-center">
+    <Image
+      src="/pricing-illustration.png"
+      alt="Pricing Illustration"
+      width={350}
+      height={350}
+      className="opacity-90 w-full max-w-[300px] h-auto"
+    />
+  </div>
 
+  {/* Text second */}
+  <div className="w-full text-center space-y-4">
+    <h1 className="text-3xl font-bold leading-tight">
+      Flexible Pricing for Every Stage of Hiring
+    </h1>
+    <p className="text-base text-gray-100 leading-relaxed">
+      Whether you’re hiring for five roles or five hundred, DigiHire’s
+      AI-driven recruitment plans scale with your business. Choose a
+      plan that fits your growth and pay only for what you use.
+    </p>
+
+    <div className="flex flex-col gap-4 items-center justify-center mt-4">
+      <button
+        className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
+      >
+        Start Free Trial
+      </button>
+
+      <a
+        href="https://calendly.com/hr-digihireai/30min"
+        onClick={handleBookDemo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+      >
+        Book Demo
+      </a>
+    </div>
+
+    {/* Calendly popup modal (same as desktop) */}
+    {showCalendly && (
+      <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+        <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
+          <button
+            onClick={closeCalendlyPopup}
+            className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
+          >
+            ×
+          </button>
+          <iframe
+            src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+            className="w-full h-full border-0 rounded-2xl"
+            title="Book a Demo"
+          ></iframe>
+        </div>
+      </div>
+    )}
+  </div>
+</section>
 
     {/* ⚙️ Section 2: Pricing Plans */}
 
@@ -279,7 +337,8 @@ const [billingCycle, setBillingCycle] = useState("monthly");
 </section>
 
 {/* ✅ ADD-ON TABLE SECTION WITH CURRENCY SWITCH */}
-<section className="py-10 bg-blue-100">
+{/* Desktop Section */}
+<section className="hidden md:block py-10 bg-blue-100">
   <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
     <h2 className="text-2xl font-bold text-gray-800">Customize Your Plan</h2>
     <p className="text-gray-600 mt-3">
@@ -338,6 +397,56 @@ const [billingCycle, setBillingCycle] = useState("monthly");
     </button>
   </div>
 </section>
+
+{/* Mobile Section */}
+<section className="block md:hidden py-10 bg-blue-100">
+  <div className="px-6 text-center mb-8">
+    <h2 className="text-2xl font-bold text-gray-800">Customize Your Plan</h2>
+    <p className="text-gray-600 mt-2">
+      Add flexibility as you grow — only pay for what you need.
+    </p>
+  </div>
+
+  <div className="space-y-6">
+    {(
+      currency === "INR"
+        ? [
+            ["Extra AI Interview", "₹75 / interview", "Beyond included quota"],
+            ["Extra Recruiter Seat", "₹1,499 / user / month", "Add more recruiters anytime"],
+            ["Additional Storage", "₹125 / GB / month", "Expand cloud space instantly"],
+            ["Premium Support", "+10–25% of plan", "Faster SLAs, priority queue"],
+            ["Proctoring / Anti-Cheat", "Custom", "For verified, integrity-based assessments"],
+            ["White-label Branding", "Custom", "Add your logo, domain, and theme"],
+          ]
+        : [
+            ["Extra AI Interview", "$0.90 / interview", "Beyond included quota"],
+            ["Extra Recruiter Seat", "$18 / user / month", "Add more recruiters anytime"],
+            ["Additional Storage", "$1.50 / GB / month", "Expand cloud space instantly"],
+            ["Premium Support", "+10–25% of plan", "Faster SLAs, priority queue"],
+            ["Proctoring / Anti-Cheat", "Custom", "For verified, integrity-based assessments"],
+            ["White-label Branding", "Custom", "Add your logo, domain, and theme"],
+          ]
+    ).map(([name, cost, details], i) => (
+      <div
+        key={i}
+        className="bg-white shadow-md rounded-xl p-4 flex flex-col items-center text-center space-y-2"
+      >
+        <div className="font-semibold text-gray-900">{name}</div>
+        <div className="text-blue-700 font-medium">{cost}</div>
+        <div className="text-gray-600 text-sm">{details}</div>
+      </div>
+    ))}
+  </div>
+
+  <div className="text-center mt-8">
+    <button
+      className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition min-w-[200px] text-center whitespace-nowrap"
+    >
+      Talk to Sales for Custom Setup
+    </button>
+  </div>
+</section>
+
 
 
       {/* 🔁 Section 4: What’s Included in Every Plan */}

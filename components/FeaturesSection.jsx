@@ -101,18 +101,21 @@ const FeaturesSection = forwardRef((props, ref) => {
     exit: { opacity: 0, y: -30, scale: 0.95, transition: { duration: 0.6 } },
   };
 
-  return (
-    <div ref={ref} className="max-w-7xl mx-auto px-6 py-10 relative bg-white-100 overflow-hidden">
+  // ✅ Helper to safely encode image paths
+  const getSafeImagePath = (title) => {
+    return `/${encodeURIComponent(title)}.png`; // converts spaces to %20
+  };
 
-      {/* Heading */}
+  return (
+    <div ref={ref} className="max-w-7xl mx-auto px-6 py-10 relative overflow-hidden">
+
       <h2 className="text-2xl font-heading font-bold text-center text-black-800 mb-9 -mt-3">
         Core Features Snapshot
       </h2>
 
-      <div className="flex items-center justify-center gap-6 relative">
-        <button onClick={scrollLeft}>
-          <DoubleLeftIcon />
-        </button>
+      {/* Desktop Carousel */}
+      <div className="hidden md:flex items-center justify-center gap-6 relative">
+        <button onClick={scrollLeft}><DoubleLeftIcon /></button>
 
         <div className="w-[85%] mx-auto overflow-hidden relative">
           <motion.div
@@ -129,16 +132,14 @@ const FeaturesSection = forwardRef((props, ref) => {
                 animate="center"
                 exit="exit"
               >
-                {/* ✅ Fixed height image wrapper for alignment */}
                 <div className="h-[140px] flex items-center justify-center mb-4">
                   <img
-                    src={`/${feature.title}.png`}
+                    src={getSafeImagePath(feature.title)}
                     alt={feature.title}
                     className="max-h-[120px] object-contain"
                     onError={(e) => (e.target.style.display = "none")}
                   />
                 </div>
-
                 <h3 className="text-lg font-semibold mb-2 text-blue-700">{feature.title}</h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
               </motion.div>
@@ -146,19 +147,43 @@ const FeaturesSection = forwardRef((props, ref) => {
           </motion.div>
         </div>
 
-        <button onClick={scrollRight}>
-          <DoubleRightIcon />
-        </button>
+        <button onClick={scrollRight}><DoubleRightIcon /></button>
       </div>
-<div className="mt-10 flex justify-center">
-  <Link
-    href="/Features"
-    className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center font-body w-[200px] h-[52px] text-center whitespace-nowrap"
-  >
-    See Full Feature List
-  </Link>
+
+      {/* Mobile Carousel */}
+      {/* Mobile Carousel */}
+<div className="flex md:hidden flex-col gap-6 items-center">
+  {loopFeatures.map((feature, idx) => (
+    // ✅ Hide AI Video Interviews card on mobile
+    <div
+      key={idx}
+      className={`flex flex-col items-center text-center border p-5 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow duration-500 w-full ${
+        feature.title === "AI Video Interviews" ? "hidden" : ""
+      }`}
+    >
+      <div className="h-[140px] flex items-center justify-center mb-4">
+        <img
+          src={getSafeImagePath(feature.title)}
+          alt={feature.title}
+          className="max-h-[120px] object-contain"
+          onError={(e) => (e.target.style.display = "none")}
+        />
+      </div>
+      <h3 className="text-lg font-semibold mb-2 text-blue-700">{feature.title}</h3>
+      <p className="text-gray-600 text-sm">{feature.description}</p>
+    </div>
+  ))}
 </div>
 
+
+      <div className="mt-10 flex justify-center">
+        <Link
+          href="/Features"
+          className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center font-body w-[200px] h-[52px] text-center whitespace-nowrap"
+        >
+          See Full Feature List
+        </Link>
+      </div>
     </div>
   );
 });

@@ -28,7 +28,8 @@ export default function FeaturesPage() {
       <Navbar />
 
 {/*  Section 1: Hero (Feature Introduction) */}
-<section className="h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-400 text-white">
+{/* Desktop Section */}
+<section className="hidden md:flex h-[400px] flex-row items-center justify-between px-6 md:px-20 py-10 bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-400 text-white">
   <div className="md:w-1/2 space-y-6">
     <h1 className="text-5xl md:text-2xl font-extrabold leading-tight ">
       Powerful Features That Make Hiring Effortless.
@@ -41,13 +42,12 @@ export default function FeaturesPage() {
 
     <div className="flex flex-wrap gap-4 pt-6">
       <button
-  className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap flex items-center justify-center text-center"
->
-  See DigiHire in Action
-</button>
+        className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap flex items-center justify-center text-center"
+      >
+        See DigiHire in Action
+      </button>
 
-
-      <button  className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px]">
+      <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px]">
         Start Free Trial
       </button>
     </div>
@@ -62,6 +62,47 @@ export default function FeaturesPage() {
       className="rounded-2xl shadow-lg"
     />
   </div>
+</section>
+
+{/* Mobile Section */}
+<section className="flex md:hidden flex-col items-center justify-between px-6 py-10 bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-400 text-white">
+
+  {/* IMAGE FIRST ON MOBILE */}
+  <div className="w-full flex justify-center mb-10">
+    <Image
+      src="/Dashboard animation .png"
+      alt="DigiHire Dashboard Illustration"
+      width={400}
+      height={200}
+      className="rounded-2xl shadow-lg"
+    />
+  </div>
+
+  {/* TEXT SECOND ON MOBILE */}
+  <div className="w-full space-y-6">
+    <h1 className="text-4xl font-extrabold leading-tight text-center">
+      Powerful Features That Make Hiring Effortless.
+    </h1>
+
+    <p className="text-lg text-gray-100 leading-relaxed text-center">
+      Simplify every stage of recruitment — from video screening to team collaboration — 
+      with DigiHire’s AI-powered platform designed for global-scale hiring.
+    </p>
+
+    <div className="flex flex-col gap-4 pt-6 items-center justify-center">
+<button
+  className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition w-[260px] h-[52px] flex items-center justify-center text-center"
+>
+  See DigiHire in Action
+</button>
+
+
+      <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition w-[260px] h-[52px] flex items-center justify-center">
+        Start Free Trial
+      </button>
+    </div>
+  </div>
+
 </section>
 
 

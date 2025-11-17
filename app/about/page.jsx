@@ -216,21 +216,22 @@ export default function AboutUs() {
 
 
       {/*  Section 5 : Global Presence */}
-    <section className="bg-blue-100 py-10 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between h-[400px]">
+   {/* Desktop Section */}
+<section className="hidden md:flex bg-blue-100 py-10 px-20 flex-row items-center justify-between h-[400px] relative">
   {/* Left Content */}
-  <div className="text-center md:text-left md:w-1/2">
-    <h2 className="text-2xl md:text-2xl font-bold mb-4 text-blue-900">
+  <div className="text-left md:w-1/2">
+    <h2 className="text-2xl font-bold mb-4 text-blue-900">
       Connecting Talent Across Continents
     </h2>
 
-    <p className="text-gray-700 text-base md:text-lg max-w-md mx-auto md:mx-0">
+    <p className="text-gray-700 text-lg max-w-md">
       From our headquarters in Pune to partnerships in North America and the Middle East, DigiHire empowers companies across time zones and industries.
       <br />
       Our distributed team and multi-region data centers ensure accessibility, security, and seamless collaboration.
     </p>
 
     {/* CTA */}
-    <div className="flex justify-center md:justify-start mt-6">
+    <div className="flex justify-start mt-6">
       <Link href="/partners">
         <button
           className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-1 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
@@ -242,7 +243,7 @@ export default function AboutUs() {
   </div>
 
   {/* Right Map Section */}
-  <div className="relative w-full md:w-1/2 max-w-lg h-[400px]">
+  <div className="relative w-1/2 max-w-lg h-[400px]">
     <Image
       src="/WorldMap.png"
       alt="World Map"
@@ -252,11 +253,7 @@ export default function AboutUs() {
 
     {/* Headquarters: Pune, India */}
     <div className="absolute top-[52%] left-[62%] text-gray-800">
-      <svg
-        className="w-6 h-6 text-red-500"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
+      <svg className="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
       </svg>
       <span className="text-sm block mt-1">Pune, India</span>
@@ -264,11 +261,7 @@ export default function AboutUs() {
 
     {/* Regional Offices: UAE */}
     <div className="absolute top-[27%] left-[66%] text-gray-800">
-      <svg
-        className="w-6 h-6 text-yellow-500"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
+      <svg className="w-6 h-6 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
       </svg>
       <span className="text-sm block mt-1">UAE</span>
@@ -276,17 +269,72 @@ export default function AboutUs() {
 
     {/* Partner Network: USA */}
     <div className="absolute top-[34%] left-[20%] text-gray-800">
-      <svg
-        className="w-6 h-6 text-blue-500"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
+      <svg className="w-6 h-6 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
       </svg>
       <span className="text-sm block mt-1">USA</span>
     </div>
   </div>
 </section>
+
+{/* Mobile Section */}
+<section className="block md:hidden bg-blue-100 py-10 px-6 flex flex-col items-center text-center h-auto relative">
+  {/* Map Image first */}
+  <div className="relative w-full max-w-md h-[300px] mb-6">
+    <Image
+      src="/WorldMap.png"
+      alt="World Map"
+      fill
+      className="object-contain object-center"
+    />
+
+    {/* Headquarters: Pune, India */}
+    <div className="absolute top-[52%] left-[62%] text-gray-800">
+      <svg className="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+      </svg>
+      <span className="text-xs block mt-1">Pune, India</span>
+    </div>
+
+    {/* Regional Offices: UAE */}
+    <div className="absolute top-[27%] left-[66%] text-gray-800">
+      <svg className="w-5 h-5 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+      </svg>
+      <span className="text-xs block mt-1">UAE</span>
+    </div>
+
+    {/* Partner Network: USA */}
+    <div className="absolute top-[34%] left-[20%] text-gray-800">
+      <svg className="w-5 h-5 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+      </svg>
+      <span className="text-xs block mt-1">USA</span>
+    </div>
+  </div>
+
+  {/* Text content below */}
+  <div className="max-w-md text-center">
+    <h2 className="text-2xl font-bold mb-4 text-blue-900">
+      Connecting Talent Across Continents
+    </h2>
+    <p className="text-gray-700 text-base mb-4">
+      From our headquarters in Pune to partnerships in North America and the Middle East, DigiHire empowers companies across time zones and industries.
+      <br />
+      Our distributed team and multi-region data centers ensure accessibility, security, and seamless collaboration.
+    </p>
+
+    {/* CTA */}
+    <Link href="/partners">
+      <button
+        className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-1 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+      >
+        Partner With Us
+      </button>
+    </Link>
+  </div>
+</section>
+
 
 
 

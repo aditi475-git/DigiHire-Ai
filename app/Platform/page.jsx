@@ -26,22 +26,20 @@ export default function PlatformOverviewPage() {
       {/* Navbar */}
       <Navbar />
 
-     {/* Section 1: Hero */}
-<section className=" h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 
+{/* Desktop Section */}
+<section className="hidden md:flex h-[400px] flex-row items-center justify-between px-6 md:px-20 py-10 
 bg-gradient-to-r from-[#4A1FD1] to-[#766CF0] text-white">
 
-
-  {/* Left - Image (was on right before) */}
+  {/* Left - Image */}
   <div className="flex-1 mt-10 md:mt-0 flex justify-center order-2 md:order-1">
-<img
-  src="/Platform image.png"
-  alt="AI Core"
-  className="w-full max-w-md mix-blend-screen opacity-95 drop-shadow-[0_0_40px_rgba(100,0,255,0.5)]"
-/>
-
+    <img
+      src="/Platform image.png"
+      alt="AI Core"
+      className="w-full max-w-md mix-blend-screen opacity-95 drop-shadow-[0_0_40px_rgba(100,0,255,0.5)]"
+    />
   </div>
 
-  {/* Right - Text (was on left before) */}
+  {/* Right - Text */}
   <div className="flex-1 max-w-3xl space-y-6 order-1 md:order-2">
     <h1 className="text-3xl md:text-2xl font-bold leading-tight">
       Your Intelligent Recruitment Platform — Built for Global-Scale Hiring.
@@ -53,18 +51,57 @@ bg-gradient-to-r from-[#4A1FD1] to-[#766CF0] text-white">
 
     {/* CTA Buttons */}
     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-        <button
-  className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap"
->
+      <button
+        className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap"
+      >
         See Platform Demo
       </button>
       <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[250px] h-[52px] whitespace-nowrap"
-  >
+      >
         Request Enterprise Access
       </button>
     </div>
   </div>
 </section>
+
+{/* Mobile Section */}
+<section className="flex md:hidden flex-col items-center justify-between px-6 py-10 bg-gradient-to-r from-[#4A1FD1] to-[#766CF0] text-white">
+
+  {/* Image first on mobile */}
+  <div className="w-full flex justify-center mb-8">
+    <img
+      src="/Platform image.png"
+      alt="AI Core"
+      className="w-full max-w-md mix-blend-screen opacity-95 drop-shadow-[0_0_40px_rgba(100,0,255,0.5)]"
+    />
+  </div>
+
+  {/* Text second on mobile */}
+  <div className="w-full space-y-6 text-center">
+    <h1 className="text-2xl font-bold leading-tight">
+      Your Intelligent Recruitment Platform — Built for Global-Scale Hiring.
+    </h1>
+    <p className="text-base text-gray-200 leading-relaxed">
+      DigiHire combines artificial intelligence, data-driven insights, and enterprise security
+      to transform how organizations hire talent — anywhere in the world.
+    </p>
+
+    {/* CTA Buttons stacked on mobile */}
+    <div className="flex flex-col gap-4 pt-6 items-center justify-center">
+     <button
+  className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[240px] h-[52px] flex items-center justify-center text-center"
+>
+  See Platform Demo
+</button>
+
+      <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[250px] h-[52px] whitespace-normal text-center"
+      >
+        Request Enterprise Access
+      </button>
+    </div>
+  </div>
+</section>
+
 
 
 {/* ✅ Section 2: Overview */}

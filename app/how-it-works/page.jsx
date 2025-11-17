@@ -43,10 +43,10 @@ export default function HowItWorksPage() {
       {/* ✅ Navbar */}
       <Navbar />
 
-      {/* 🏠 Section 1: Hero Banner */}
-    <section className=" h-[400px] flex flex-col md:flex-row-reverse items-center justify-between px-6 md:px-16 py-10 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
-  {/* ✅ Right Side - Text (now visually on right side on desktop) */}
-  <div className="md:w-1/2 text-center md:text-left space-y-6 z-10">
+      {/* Desktop Section */}
+<section className="hidden md:flex h-[400px] flex-row-reverse items-center justify-between px-6 md:px-16 py-10 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
+  {/* Right Side - Text */}
+  <div className="md:w-1/2 text-left space-y-6 z-10">
     <h1 className="text-3xl md:text-2xl font-bold leading-tight text-gray-900">
       From Job Creation to Hiring Decision — Streamlined with AI Precision.
     </h1>
@@ -59,24 +59,23 @@ export default function HowItWorksPage() {
     </p>
 
     {/* CTA Buttons */}
-    <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+    <div className="flex flex-wrap justify-start gap-4 mt-6">
       <Button
-  className="relative !bg-blue-700 hover:!bg-blue-800 !text-white !font-bold !px-8 !py-3 !rounded-full !shadow-md !transition flex items-center justify-center gap-2 overflow-hidden font-body !w-[200px] !h-[52px] !whitespace-nowrap"
->
-  See DigiHire in Action
-</Button>
+        className="relative !bg-blue-700 hover:!bg-blue-800 !text-white !font-bold !px-8 !py-3 !rounded-full !shadow-md !transition flex items-center justify-center gap-2 overflow-hidden font-body !w-[200px] !h-[52px] !whitespace-nowrap"
+      >
+        See DigiHire in Action
+      </Button>
 
-     <Button
-  variant="outline"
-  className="!bg-white !border-2 !border-blue-900 !text-blue-900 !font-bold !px-8 !py-3 !rounded-full !shadow-md hover:!bg-blue-900 hover:!text-white !transition font-body focus:!outline-none focus:!ring-0 !w-[200px] !h-[52px]"
->
-  Start Free Trial
-</Button>
-
+      <Button
+        variant="outline"
+        className="!bg-white !border-2 !border-blue-900 !text-blue-900 !font-bold !px-8 !py-3 !rounded-full !shadow-md hover:!bg-blue-900 hover:!text-white !transition font-body focus:!outline-none focus:!ring-0 !w-[200px] !h-[52px]"
+      >
+        Start Free Trial
+      </Button>
     </div>
   </div>
 
-  {/* ✅ Left Side - Image (now on left side in desktop view, clean – no bg/shadow) */}
+  {/* Left Side - Image */}
   <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center relative">
     <div className="md:w-[400px] text-center">
       <Image
@@ -89,6 +88,52 @@ export default function HowItWorksPage() {
     </div>
   </div>
 </section>
+
+{/* Mobile Section */}
+<section className="flex md:hidden flex-col items-center justify-between px-6 py-10 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
+
+  {/* Image first on mobile */}
+  <div className="w-full flex justify-center mb-8">
+    <Image
+      src="/AI hiring workflow.png"
+      alt="AI Hiring Workflow"
+      width={300}
+      height={300}
+      className="object-contain mx-auto"
+    />
+  </div>
+
+  {/* Text second on mobile */}
+  <div className="w-full space-y-6 text-center">
+    <h1 className="text-2xl font-bold leading-tight text-gray-900">
+      From Job Creation to Hiring Decision — Streamlined with AI Precision.
+    </h1>
+    <p className="text-base text-black-600 leading-relaxed">
+      DigiHire automates every step of recruitment — from setting up roles
+      to selecting the right candidate.
+      <br />
+      Our AI takes care of screening, analytics, and reporting, so your
+      team can focus on what really matters: people.
+    </p>
+
+    {/* CTA Buttons stacked on mobile */}
+    <div className="flex flex-col gap-4 pt-6 items-center justify-center">
+      <Button
+        className="relative !bg-blue-700 hover:!bg-blue-800 !text-white !font-bold !px-8 !py-3 !rounded-full !shadow-md !transition flex items-center justify-center gap-2 overflow-hidden font-body !w-[260px] !h-[52px] !whitespace-nowrap text-center"
+      >
+        See DigiHire in Action
+      </Button>
+
+      <Button
+        variant="outline"
+        className="!bg-white !border-2 !border-blue-900 !text-blue-900 !font-bold !px-8 !py-3 !rounded-full !shadow-md hover:!bg-blue-900 hover:!text-white !transition font-body focus:!outline-none focus:!ring-0 !w-[260px] !h-[52px] text-center"
+      >
+        Start Free Trial
+      </Button>
+    </div>
+  </div>
+</section>
+
 
 
       {/* 🧩 Section 2: Quick 4-Step Summary */}
@@ -270,9 +315,10 @@ export default function HowItWorksPage() {
 
 
       {/* 📊 Section 6: Step 4 — Review, Compare & Decide */}
-      <section className="py-10 px-6 md:px-16 bg-blue-100">
-  <div className="flex flex-col md:flex-row-reverse items-center justify-between">
-    {/* ✅ Right Side — Information */}
+{/* Desktop Section */}
+<section className="hidden md:flex py-10 px-6 md:px-16 bg-blue-100">
+  <div className="flex flex-row-reverse items-center justify-between w-full">
+    {/* Right Side — Information */}
     <div className="md:w-1/2 space-y-6 mt-8 md:mt-0">
       <h2 className="text-2xl font-bold text-gray-900">
         Step 4: Review, Compare, and Collaborate.
@@ -289,14 +335,13 @@ export default function HowItWorksPage() {
         <li>Final shortlist export</li>
       </ul>
       <Button
-  className="relative !bg-blue-700 hover:!bg-blue-800 !text-white !font-bold !px-10 !py-4 !rounded-full !shadow-md !transition flex items-center justify-center gap-2 overflow-hidden font-body !w-[200px] !h-[52px] whitespace-nowrap"
->
-  See Hiring Dashboard
-</Button>
-
+        className="relative !bg-blue-700 hover:!bg-blue-800 !text-white !font-bold !px-10 !py-4 !rounded-full !shadow-md !transition flex items-center justify-center gap-2 overflow-hidden font-body !w-[200px] !h-[52px] whitespace-nowrap"
+      >
+        See Hiring Dashboard
+      </Button>
     </div>
 
-    {/* ✅ Left Side — Image */}
+    {/* Left Side — Image */}
     <div className="md:w-1/2 flex justify-center">
       <Image
         src="/analytics dashboard.png"
@@ -306,6 +351,43 @@ export default function HowItWorksPage() {
         className="rounded-xl shadow-md object-contain"
       />
     </div>
+  </div>
+</section>
+
+{/* Mobile Section */}
+<section className="flex md:hidden flex-col items-center justify-center py-10 px-6 bg-blue-100 space-y-8">
+  {/* Image first */}
+  <div className="w-full flex justify-center">
+    <Image
+      src="/analytics dashboard.png"
+      alt="Review Dashboard"
+      width={350}
+      height={250}
+      className="rounded-xl shadow-md object-contain"
+    />
+  </div>
+
+  {/* Text second */}
+  <div className="w-full space-y-4 text-center">
+    <h2 className="text-2xl font-bold text-gray-900">
+      Step 4: Review, Compare, and Collaborate.
+    </h2>
+    <p className="text-gray-700 text-base">
+      All candidate analytics, recordings, and notes appear in one
+      unified dashboard. Hiring teams can review clips, add comments,
+      and finalize the shortlist together — eliminating confusion and bias.
+    </p>
+    <ul className="list-disc pl-6 text-gray-700 text-left max-w-md mx-auto">
+      <li>Team collaboration tools</li>
+      <li>Candidate comparison view</li>
+      <li>Shared feedback notes</li>
+      <li>Final shortlist export</li>
+    </ul>
+    <Button
+      className="relative !bg-blue-700 hover:!bg-blue-800 !text-white !font-bold !px-10 !py-4 !rounded-full !shadow-md !transition flex items-center justify-center gap-2 overflow-hidden font-body !w-[200px] !h-[52px] whitespace-nowrap mx-auto"
+    >
+      See Hiring Dashboard
+    </Button>
   </div>
 </section>
 
@@ -345,15 +427,16 @@ export default function HowItWorksPage() {
 
 
      {/* 🔐 Section 8: Why It Works Better */}
-<section className="py-10 px-6 md:px-20 bg-blue-100 text-center">
+{/* Desktop Section */}
+<section className="hidden md:block py-10 px-6 md:px-20 bg-blue-100 text-center">
   <h2 className="text-2xl font-bold text-gray-900 mb-12">
     Why Companies Choose DigiHire
   </h2>
 
-  {/* ✅ Table Wrapper */}
+  {/* Table Wrapper */}
   <div className="overflow-x-auto flex justify-center">
     <table className="min-w-[700px] bg-white rounded-xl shadow-lg border border-gray-200 text-left">
-      {/* ✅ Table Head */}
+      {/* Table Head */}
       <thead>
         <tr className="bg-blue-50 text-gray-900 font-semibold text-lg">
           <th className="py-4 px-6 border-b border-gray-200 w-1/2">
@@ -365,7 +448,7 @@ export default function HowItWorksPage() {
         </tr>
       </thead>
 
-      {/* ✅ Table Body */}
+      {/* Table Body */}
       <tbody>
         {[
           ["Manual scheduling", "Automated candidate scheduling"],
@@ -386,11 +469,41 @@ export default function HowItWorksPage() {
     </table>
   </div>
 
-  {/* ✅ Subtext */}
+  {/* Subtext */}
   <p className="text-gray-700 mt-8">
     With DigiHire, hiring becomes data-driven, consistent, and delightfully simple.
   </p>
 </section>
+
+{/* Mobile Section */}
+<section className="block md:hidden py-10 px-6 bg-blue-100 text-center space-y-6">
+  <h2 className="text-2xl font-bold text-gray-900">
+    Why Companies Choose DigiHire
+  </h2>
+
+  {/* Cards for each row */}
+  {[
+    ["Manual scheduling", "Automated candidate scheduling"],
+    ["Subjective evaluations", "AI-based standardized scoring"],
+    ["Repetitive screening calls", "On-demand video interviews"],
+    ["Missed communication", "Real-time notifications & tracking"],
+    ["Inconsistent quality", "AI ensures fairness and consistency"],
+  ].map(([traditional, advantage], i) => (
+    <div
+      key={i}
+      className="bg-white rounded-xl shadow-md p-4 text-left"
+    >
+      <p className="text-gray-700 font-medium mb-2">{traditional}</p>
+      <p className="text-blue-700 font-semibold">{advantage}</p>
+    </div>
+  ))}
+
+  {/* Subtext */}
+  <p className="text-gray-700 mt-4">
+    With DigiHire, hiring becomes data-driven, consistent, and delightfully simple.
+  </p>
+</section>
+
 
 
 

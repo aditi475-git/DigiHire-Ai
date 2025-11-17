@@ -152,70 +152,127 @@ export default function ContactPage() {
       <Navbar />
 
       {/* 🏠 Section 1: Hero Banner */}
-      <section className=" h-[400px] bg-white py-10 px-8 md:px-20 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-10">
-        {/* Left: Text Section */}
-        <div className="flex-1 flex flex-col items-center md:items-start justify-center space-y-6 text-center md:text-left">
-          <h1 className="text-2xl font-bold text-gray-800 leading-tight">
-            Let’s Build Your Smarter Hiring Future.
-          </h1>
-          <p className="text-lg text-gray-700 max-w-xl">
-            We’d love to help you simplify your hiring process with DigiHire’s AI-powered platform.
-            Whether you’re a recruiter, partner, or enterprise, our team is ready to connect.
-          </p>
-          <div className="flex flex-wrap justify-center md:justify-start gap-4">
-           <div className="relative flex flex-col items-center">
-      {/* Book Demo link */}
-      <a
-        href="https://calendly.com/hr-digihireai/30min"
-        onClick={handleBookDemo} // ✅ opens popup
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
-      >
-        Book Demo
-      </a>
+      {/* Desktop Section */}
+<section className="hidden md:flex h-[400px] bg-white py-10 px-20 flex-row items-center justify-between text-left gap-10">
+  {/* Left: Text Section */}
+  <div className="flex-1 flex flex-col items-start justify-center space-y-6">
+    <h1 className="text-2xl font-bold text-gray-800 leading-tight">
+      Let’s Build Your Smarter Hiring Future.
+    </h1>
+    <p className="text-lg text-gray-700 max-w-xl">
+      We’d love to help you simplify your hiring process with DigiHire’s AI-powered platform.
+      Whether you’re a recruiter, partner, or enterprise, our team is ready to connect.
+    </p>
+    <div className="flex flex-wrap gap-4">
+      <div className="relative flex flex-col items-start">
+        {/* Book Demo link */}
+        <a
+          href="https://calendly.com/hr-digihireai/30min"
+          onClick={handleBookDemo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+        >
+          Book Demo
+        </a>
 
-      {/* ✅ Calendly popup modal */}
-      {showCalendly && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
-            {/* Close button */}
-            <button
-              onClick={closeCalendlyPopup}
-              className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
-            >
-              ×
-            </button>
-
-            {/* Calendly iframe */}
-            <iframe
-              src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
-              className="w-full h-full border-0 rounded-2xl"
-              title="Book a Demo"
-            ></iframe>
+        {/* Calendly popup modal */}
+        {showCalendly && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+            <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
+              <button
+                onClick={closeCalendlyPopup}
+                className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
+              >
+                ×
+              </button>
+              <iframe
+                src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+                className="w-full h-full border-0 rounded-2xl"
+                title="Book a Demo"
+              ></iframe>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+
+      <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]">
+        Start Free Trial
+      </button>
     </div>
+  </div>
 
-            <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
->
-              Start Free Trial
-            </button>
+  {/* Right: Image Section */}
+  <div className="flex-1 flex justify-end">
+    <Image
+      src="/Connect with Confidence.png"
+      alt="Connect with Confidence"
+      width={500}
+      height={400}
+      className="rounded-2xl drop-shadow-lg object-contain"
+    />
+  </div>
+</section>
+
+{/* Mobile Section */}
+<section className="block md:hidden h-auto py-10 px-6 bg-white flex flex-col items-center justify-center text-center gap-10">
+  {/* Image First */}
+  <div className="flex justify-center w-full">
+    <Image
+      src="/Connect with Confidence.png"
+      alt="Connect with Confidence"
+      width={400}
+      height={300}
+      className="rounded-2xl drop-shadow-lg object-contain"
+    />
+  </div>
+
+  {/* Text Section */}
+  <div className="flex flex-col items-center justify-center space-y-6 text-center">
+    <h1 className="text-2xl font-bold text-gray-800 leading-tight">
+      Let’s Build Your Smarter Hiring Future.
+    </h1>
+    <p className="text-lg text-gray-700 max-w-md">
+      We’d love to help you simplify your hiring process with DigiHire’s AI-powered platform.
+      Whether you’re a recruiter, partner, or enterprise, our team is ready to connect.
+    </p>
+    <div className="flex flex-col gap-4 items-center w-full">
+      <div className="relative flex flex-col items-center">
+        <a
+          href="https://calendly.com/hr-digihireai/30min"
+          onClick={handleBookDemo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap"
+        >
+          Book Demo
+        </a>
+
+        {showCalendly && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+            <div className="bg-white rounded-2xl shadow-xl w-[90%] h-[90%] relative overflow-hidden">
+              <button
+                onClick={closeCalendlyPopup}
+                className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
+              >
+                ×
+              </button>
+              <iframe
+                src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+                className="w-full h-full border-0 rounded-2xl"
+                title="Book a Demo"
+              ></iframe>
+            </div>
           </div>
-        </div>
+        )}
+      </div>
 
-        {/* Right: Image Section */}
-        <div className="flex-1 flex justify-center md:justify-end">
-          <Image
-            src="/Connect with Confidence.png"
-            alt="Connect with Confidence"
-            width={500}
-            height={400}
-            className="rounded-2xl drop-shadow-lg object-contain"
-          />
-        </div>
-      </section>
+      <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]">
+        Start Free Trial
+      </button>
+    </div>
+  </div>
+</section>
 
 
       {/* 🤝 Section 2: Quick Contact Options */}
@@ -512,16 +569,17 @@ ${formData.message || "N/A"}
 
 
       {/* 💬 Section 5: Book a Live Demo */}
-      <section className="py-10 px-8 md:px-20 text-center bg-white">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          Experience DigiHire in Action.
-        </h2>
-        <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-          Schedule a personalized walkthrough to see how our AI-driven platform can
-          transform your hiring workflow.
-        </p>
-        <div className="flex justify-center gap-6">
-           <div className="relative flex flex-col items-center">
+      {/* Desktop Section */}
+<section className="hidden md:flex py-10 px-20 text-center bg-white flex-col items-center">
+  <h2 className="text-2xl font-bold text-gray-800 mb-4">
+    Experience DigiHire in Action.
+  </h2>
+  <p className="text-lg text-gray-700 mb-8 max-w-2xl">
+    Schedule a personalized walkthrough to see how our AI-driven platform can
+    transform your hiring workflow.
+  </p>
+  <div className="flex justify-center gap-6">
+    <div className="relative flex flex-col items-center">
       {/* Book a Demo Button */}
       <button
         className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px]"
@@ -530,19 +588,16 @@ ${formData.message || "N/A"}
         Book a Demo
       </button>
 
-      {/* ✅ Calendly popup modal */}
+      {/* Calendly popup modal */}
       {showCalendly && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
           <div className="bg-white rounded-2xl shadow-xl w-[90%] md:w-[800px] h-[90%] relative overflow-hidden">
-            {/* Close button */}
             <button
               onClick={closeCalendlyPopup}
               className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
             >
               ×
             </button>
-
-            {/* Calendly iframe */}
             <iframe
               src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
               className="w-full h-full border-0 rounded-2xl"
@@ -552,12 +607,61 @@ ${formData.message || "N/A"}
         </div>
       )}
     </div>
-          <button  className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
->
-            Contact Sales
-          </button>
+
+    <button
+      className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
+    >
+      Contact Sales
+    </button>
+  </div>
+</section>
+
+{/* Mobile Section */}
+<section className="block md:hidden py-10 px-6 text-center bg-white flex flex-col items-center gap-6">
+  {/* Text Section */}
+  <h2 className="text-2xl font-bold text-gray-800">
+    Experience DigiHire in Action.
+  </h2>
+  <p className="text-lg text-gray-700 max-w-md">
+    Schedule a personalized walkthrough to see how our AI-driven platform can
+    transform your hiring workflow.
+  </p>
+  
+  <div className="flex flex-col gap-4 w-full items-center">
+    <div className="relative flex flex-col items-center">
+      <button
+        className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px]"
+        onClick={handleBookDemo}
+      >
+        Book a Demo
+      </button>
+
+      {showCalendly && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+          <div className="bg-white rounded-2xl shadow-xl w-[90%] h-[90%] relative overflow-hidden">
+            <button
+              onClick={closeCalendlyPopup}
+              className="absolute top-3 right-3 text-gray-700 hover:text-black text-2xl font-bold z-10"
+            >
+              ×
+            </button>
+            <iframe
+              src="https://calendly.com/hr-digihireai/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+              className="w-full h-full border-0 rounded-2xl"
+              title="Book a Demo"
+            ></iframe>
+          </div>
         </div>
-      </section>
+      )}
+    </div>
+
+    <button
+      className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px]"
+    >
+      Contact Sales
+    </button>
+  </div>
+</section>
 
 
       {/* 📧 Section 6: Subscribe or Follow Us */}
@@ -577,15 +681,21 @@ ${formData.message || "N/A"}
               Follow us on:
             </p>
             <div className="flex items-center gap-4 text-lg md:text-xl">
-              <a href="#" className="hover:opacity-80 transition">
-                <Image
-                  src="/LinkedIn_logo.png"
-                  alt="LinkedIn"
-                  width={28}
-                  height={28}
-                  className="object-contain"
-                />
-              </a>
+              <a
+  href="https://www.linkedin.com/company/digihireai.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:opacity-80 transition"
+>
+  <Image
+    src="/LinkedIn_logo.png"
+    alt="LinkedIn"
+    width={28}
+    height={28}
+    className="object-contain"
+  />
+</a>
+
               <a href="#" className="hover:opacity-80 transition">
                 <Image
                   src="/Youtube_logo.png"
@@ -604,15 +714,21 @@ ${formData.message || "N/A"}
                   className="object-contain"
                 />
               </a>
-              <a href="#" className="hover:opacity-80 transition">
-                <Image
-                  src="/Twitter logo.png"
-                  alt="Twitter"
-                  width={28}
-                  height={28}
-                  className="object-contain"
-                />
-              </a>
+              <a
+  href="https://x.com/digihireai"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:opacity-80 transition"
+>
+  <Image
+    src="/Twitter logo.png"
+    alt="Twitter"
+    width={28}
+    height={28}
+    className="object-contain"
+  />
+</a>
+
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import Navbar from "../../../components/Navbar";
 import FooterSection from "../../../components/FooterSection";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AllFaqsPage() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -95,9 +96,54 @@ export default function AllFaqsPage() {
     },
   ];
 
+  const router = useRouter();
+
+  // ✅ Define handleBack function
+  const handleBack = () => {
+    router.back(); // navigates to previous page
+  };
+
+
   return (
     <>
       <Navbar />
+
+      <button
+  onClick={handleBack}
+  className="
+    fixed 
+    right-4 
+    bottom-28 
+    w-12 
+    h-12 
+    rounded-full 
+    bg-white/10 
+    backdrop-blur-md 
+    shadow-lg 
+    flex 
+    items-center 
+    justify-center 
+    text-white 
+    hover:bg-white/20 
+    transition
+    z-50
+  "
+>
+  {/* Chevron Back Icon */}
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="black" 
+    strokeWidth="3" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className="w-6 h-6"
+  >
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+</button>
+
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center px-6 md:px-20 py-20 bg-blue-100 relative overflow-hidden">

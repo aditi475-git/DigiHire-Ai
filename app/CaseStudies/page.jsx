@@ -135,41 +135,76 @@ export default function CaseStudiesPage() {
 
 
       {/* 🏠 Section 1: Hero Banner */}
-<section className=" h-[400px] flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
+{/* Desktop Section */}
+<section className="hidden md:flex h-[400px] flex-row items-center justify-between px-16 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
   {/* Background pattern */}
   <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
 
   {/* Left Content */}
-  <div className="z-10 max-w-xl md:max-w-2xl w-full md:w-1/2 text-center md:text-left flex flex-col justify-center">
-    <h1 className="text-2xl md:text-2xl font-bold mb-3 text-blue-900 leading-snug">
+  <div className="z-10 max-w-2xl w-1/2 text-left flex flex-col justify-center">
+    <h1 className="text-2xl font-bold mb-3 text-blue-900 leading-snug">
       See How DigiHire Transforms Hiring Across Industries.
     </h1>
-
-    <p className="text-base md:text-lg mb-6 text-gray-700 leading-relaxed">
+    <p className="text-lg mb-6 text-gray-700 leading-relaxed">
       Real companies. Real results. Discover how HR teams and organizations globally have achieved measurable success using DigiHire’s AI-powered recruitment platform.
     </p>
 
-    <div className="flex flex-wrap justify-center md:justify-start gap-3">
-      <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2.5 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap text-sm md:text-base">
+    <div className="flex flex-wrap justify-start gap-3">
+      <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2.5 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap text-base">
         View All Case Studies
       </button>
 
-      <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-6 py-2.5 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap text-sm md:text-base flex items-center justify-center
-">
+      <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-6 py-2.5 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap text-base flex items-center justify-center">
         Share Your Success Story
       </button>
     </div>
   </div>
 
   {/* Right Image */}
-  <div className="z-10 flex justify-center md:justify-end w-full md:w-1/2 mt-6 md:mt-0">
+  <div className="z-10 flex justify-end w-1/2">
+    <img
+      src="/Case Studies .png"
+      alt="Case Studies"
+      className="w-[380px] lg:w-[450px] object-contain drop-shadow-lg"
+    />
+  </div>
+</section>
+
+{/* Mobile Section */}
+<section className="block md:hidden h-auto flex flex-col items-center justify-center px-6 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
+  {/* Background pattern */}
+  <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
+
+  {/* Image First on Mobile */}
+  <div className="z-10 flex justify-center w-full mb-6">
     <img
       src="/Case Studies .png"
       alt="Case Studies"
       className="w-[280px] md:w-[380px] lg:w-[450px] object-contain drop-shadow-lg"
     />
   </div>
+
+  {/* Text Content Second */}
+  <div className="z-10 max-w-md w-full text-center flex flex-col items-center justify-center">
+    <h1 className="text-2xl font-bold mb-3 text-blue-900 leading-snug">
+      See How DigiHire Transforms Hiring Across Industries.
+    </h1>
+    <p className="text-base mb-6 text-gray-700 leading-relaxed">
+      Real companies. Real results. Discover how HR teams and organizations globally have achieved measurable success using DigiHire’s AI-powered recruitment platform.
+    </p>
+
+    <div className="flex flex-col gap-3 w-full items-center">
+      <button className="relative bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2.5 rounded-full shadow-md transition flex items-center justify-center gap-2 overflow-hidden font-body w-[200px] h-[52px] whitespace-nowrap text-sm">
+        View All Case Studies
+      </button>
+
+      <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-6 py-2.5 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition font-body focus:outline-none focus:ring-0 w-[200px] h-[52px] whitespace-nowrap text-sm flex items-center justify-center">
+        Share Your Success Story
+      </button>
+    </div>
+  </div>
 </section>
+
         
         {/* 📊 Section 2: Highlighted Case Studies */}
        <section className="py-10 px-8 md:px-20 bg-white">
