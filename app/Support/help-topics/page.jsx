@@ -126,7 +126,7 @@ export default function MoreHelpTopicsPage() {
 
 
       {/* Hero Section */}
-      <section className="py-20 px-6 md:px-20 bg-gradient-to-br from-blue-50 to-blue-100 text-center">
+      <section className="py-10 px-6 md:px-20 bg-gradient-to-br from-blue-50 to-blue-100 text-center">
         <h1 className="text-3xl md:text-2xl font-bold text-blue-900 mb-4">
           More Help Topics
         </h1>
@@ -137,7 +137,7 @@ export default function MoreHelpTopicsPage() {
       </section>
 
       {/* Help Categories Grid */}
-      <section className="py-16 px-6 md:px-20 bg-white">
+      <section className="py-10 px-6 md:px-20 bg-white">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {categories.map((cat, index) => (
             <div
@@ -160,7 +160,7 @@ export default function MoreHelpTopicsPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 px-6 md:px-20 bg-blue-50 text-center">
+      <section className="py-10 px-6 md:px-20 bg-blue-50 text-center">
         <h2 className="text-2xl md:text-2xl font-bold text-blue-900 mb-4">
           Still Need Help?
         </h2>

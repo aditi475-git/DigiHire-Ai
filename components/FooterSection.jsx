@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link"; // ✅ Import Link from Next.js
+import Image from "next/image";
+
 
 export default function FooterSection() {
   return (
@@ -58,7 +60,7 @@ export default function FooterSection() {
         </div>
 
         {/* Column 4: Contact */}
-        <div>
+         <div>
           <h3 className="text-xl font-bold mb-4">Contact</h3>
           <ul className="space-y-2">
             <li className="flex items-center gap-2">
@@ -77,8 +79,95 @@ export default function FooterSection() {
               </span>
             </li>
           </ul>
+
+          {/* ✅ SOCIAL MEDIA ICONS (Added exactly after Contact) */}
+          <div className="flex items-center gap-4 mt-4">
+            <p className="font-semibold text-gray-300 whitespace-nowrap">
+              Follow us on:
+            </p>
+
+            <div className="flex items-center gap-4 text-lg md:text-xl">
+              
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/company/digihireai.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition"
+              >
+                <Image
+                  src="/LinkedIn_logo.png"
+                  alt="LinkedIn"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+
+              {/* YouTube */}
+              <a
+                href="#"
+                className="hover:opacity-80 transition"
+              >
+                <Image
+                  src="/Youtube_logo.png"
+                  alt="YouTube"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="#"
+                className="hover:opacity-80 transition"
+              >
+                <Image
+                  src="/Facebook_Logo.png"
+                  alt="Facebook"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+
+              {/* Twitter / X */}
+              <a
+                href="https://x.com/digihireai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition"
+              >
+                <Image
+                  src="/Twitter logo.png"
+                  alt="Twitter"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/digihireai?igsh=MW91dzdqZGRlM2Fvdg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition"
+              >
+                <Image
+                  src="/Instagram.png"
+                  alt="Instagram"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+
 
       {/* Bottom Line */}
       <div className="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">

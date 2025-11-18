@@ -213,8 +213,8 @@ export default function HowItWorksPage() {
           <Image
             src="/interview dashboard.png"
             alt="Create Role Dashboard"
-            width={450}
-            height={300}
+            width={300}
+            height={200}
             className="rounded-xl shadow-md object-contain"
           />
         </div>
@@ -392,36 +392,40 @@ export default function HowItWorksPage() {
 </section>
 
 
-      {/* 🔁 Section 7: Continuous Feedback & Optimization */}
-<section className="py-10 px-6 md:px-16 bg-white-100">
-  <div className="flex flex-col md:flex-row items-center justify-between text-left">
-    {/* ✅ Left Side — Text Content */}
-    <div className="md:w-1/2 space-y-10">
-      <h2 className="text-2xl font-bold text-gray-900">
+    {/* 🔁 Section 7: Continuous Feedback & Optimization */}
+<section className="px-6 md:px-16 bg-white-100 h-[400px] flex items-center">
+  <div className="flex flex-col md:flex-row items-center justify-between text-left w-full h-full">
+
+    {/* ✅ Left Side — Text Content (Inside fixed height) */}
+    <div className="md:w-1/2 flex flex-col justify-center h-full space-y-6">
+      <h2 className="text-2xl font-bold text-gray-900 leading-tight">
         Constant Improvement Through Feedback.
       </h2>
-      <p className="text-gray-700 text-lg">
+
+      <p className="text-gray-700 text-lg leading-relaxed">
         After each hiring cycle, DigiHire captures recruiter and candidate feedback
         to continuously enhance AI accuracy and overall experience. This makes each
         hiring round smarter, faster, and more personalized.
       </p>
-      <ul className="list-none text-gray-800 text-lg space-y-2">
+
+      <ul className="list-none text-gray-800 text-lg space-y-1">
         <li>• Built-in satisfaction tracking</li>
         <li>• AI model fine-tuning</li>
         <li>• Continuous learning for better predictions</li>
       </ul>
     </div>
 
-    {/* ✅ Right Side — Image */}
-    <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+    {/* ✅ Right Side — Image (Centered inside the fixed height) */}
+    <div className="md:w-1/2 flex justify-center items-center h-full mt-6 md:mt-0">
       <Image
         src="/ai-feedback-loop.png"
         alt="AI Feedback Loop"
         width={400}
         height={400}
-        className="object-contain"
+        className="object-contain max-h-full"
       />
     </div>
+
   </div>
 </section>
 

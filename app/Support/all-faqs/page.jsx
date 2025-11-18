@@ -146,10 +146,10 @@ export default function AllFaqsPage() {
 
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center px-6 md:px-20 py-20 bg-blue-100 relative overflow-hidden">
+      <section className="flex flex-col items-center justify-center text-center px-6 md:px-20 py-10 bg-blue-100 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
         <div className="z-10 max-w-3xl">
-          <h1 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+          <h1 className="text-3xl md:text-2xl font-bold text-blue-900 mb-4">
             All Frequently Asked Questions
           </h1>
           <p className="text-lg text-gray-700 mb-6">
@@ -181,7 +181,7 @@ export default function AllFaqsPage() {
       </section>
 
       {/* Contact HR Section */}
-      <section className="py-16 bg-blue-50 text-center px-6">
+      <section className="py-10 bg-blue-50 text-center px-6">
         <h2 className="text-2xl font-bold text-blue-900 mb-4">
           Still Have Questions?
         </h2>

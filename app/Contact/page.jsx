@@ -676,61 +676,6 @@ ${formData.message || "N/A"}
           <p className="text-gray-700 text-center md:text-left">
             📩 Get monthly insights on AI, hiring trends, and product updates.
           </p>
-          <div className="flex items-center gap-4">
-            <p className="font-semibold text-gray-800 whitespace-nowrap">
-              Follow us on:
-            </p>
-            <div className="flex items-center gap-4 text-lg md:text-xl">
-              <a
-  href="https://www.linkedin.com/company/digihireai.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:opacity-80 transition"
->
-  <Image
-    src="/LinkedIn_logo.png"
-    alt="LinkedIn"
-    width={28}
-    height={28}
-    className="object-contain"
-  />
-</a>
-
-              <a href="#" className="hover:opacity-80 transition">
-                <Image
-                  src="/Youtube_logo.png"
-                  alt="YouTube"
-                  width={28}
-                  height={28}
-                  className="object-contain"
-                />
-              </a>
-              <a href="#" className="hover:opacity-80 transition">
-                <Image
-                  src="/Facebook_Logo.png"
-                  alt="Facebook"
-                  width={28}
-                  height={28}
-                  className="object-contain"
-                />
-              </a>
-              <a
-  href="https://x.com/digihireai"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:opacity-80 transition"
->
-  <Image
-    src="/Twitter logo.png"
-    alt="Twitter"
-    width={28}
-    height={28}
-    className="object-contain"
-  />
-</a>
-
-            </div>
-          </div>
         </div>
 
         {/* Bottom Row: Input + Button */}

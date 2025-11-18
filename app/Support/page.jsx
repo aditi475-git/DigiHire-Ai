@@ -372,7 +372,7 @@ const handleBack = () => {
       </section>
 
       {/* 🤖 Section 6: AI Chat Assistant */}
-      <section className="py-16 px-8 md:px-20 bg-white text-center">
+      <section className="py-10 px-8 md:px-20 bg-white text-center">
         <h2 className="text-2xl font-bold text-blue-900 mb-4">
           Experience 24×7 Smart Hiring Assistance
         </h2>
@@ -398,7 +398,7 @@ links to relevant help articles.
       </section>
 
       {/* 📞 Section 7: Contact Support Form */}
-    <section className="py-16 px-8 md:px-20 bg-blue-50">
+    <section className="py-10 px-8 md:px-20 bg-blue-50">
   <h2 className="text-2xl font-bold text-blue-900 text-center mb-10">
     Submit a Support Request
   </h2>
@@ -440,7 +440,7 @@ links to relevant help articles.
 
 
       {/* 🕓 Section 8: Service Level Commitments */}
-      <section className="py-16 px-8 md:px-20 bg-white text-center">
+      <section className="py-10 px-8 md:px-20 bg-white text-center">
         <h2 className="text-2xl font-bold text-blue-900 mb-10">
           Our Support Promise
         </h2>
