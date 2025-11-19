@@ -222,6 +222,11 @@ const [billingCycle, setBillingCycle] = useState("monthly");
         </span>
       </div>
     </div>
+
+    {/* ✅ Added message with equal top/bottom spacing */}
+    <p className="text-lg font-bold italic text-blue-900 text-center my-4">
+      Start your free 14-day trial today.
+    </p>
   </div>
 
   {/* ✅ Pricing Data */}
@@ -299,7 +304,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
             {plan.title}
           </h3>
 
-          {/* ✅ Dynamic Pricing */}
+          {/* Dynamic Pricing */}
           {plan.custom ? (
             <p className="text-gray-600 mb-4 text-lg font-semibold">
               Custom Pricing
@@ -335,6 +340,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
     ))}
   </div>
 </section>
+
 
 {/* ✅ ADD-ON TABLE SECTION WITH CURRENCY SWITCH */}
 {/* Desktop Section */}

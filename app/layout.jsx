@@ -20,7 +20,7 @@ export const metadata = {
   title: "DigiHire",
   description: "Modern hiring platform",
   icons: {
-    icon: "/logo.jpeg", // ✅ favicon through metadata
+    icon: "/logo.png", // ✅ favicon through metadata
   },
 };
 

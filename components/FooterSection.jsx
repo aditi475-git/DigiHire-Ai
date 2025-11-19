@@ -98,8 +98,8 @@ export default function FooterSection() {
                 <Image
                   src="/LinkedIn_logo.png"
                   alt="LinkedIn"
-                  width={28}
-                  height={28}
+                  width={30}
+                  height={30}
                   className="object-contain"
                 />
               </a>
@@ -112,8 +112,8 @@ export default function FooterSection() {
                 <Image
                   src="/Youtube_logo.png"
                   alt="YouTube"
-                  width={28}
-                  height={28}
+                  width={30}
+                  height={30}
                   className="object-contain"
                 />
               </a>
@@ -126,8 +126,8 @@ export default function FooterSection() {
                 <Image
                   src="/Facebook_Logo.png"
                   alt="Facebook"
-                  width={28}
-                  height={28}
+                  width={30}
+                  height={30}
                   className="object-contain"
                 />
               </a>
@@ -140,10 +140,10 @@ export default function FooterSection() {
                 className="hover:opacity-80 transition"
               >
                 <Image
-                  src="/Twitter logo.png"
+                  src="/Twitter Logo1.png"
                   alt="Twitter"
-                  width={28}
-                  height={28}
+                  width={35}
+                  height={35}
                   className="object-contain"
                 />
               </a>
@@ -158,8 +158,8 @@ export default function FooterSection() {
                 <Image
                   src="/Instagram.png"
                   alt="Instagram"
-                  width={28}
-                  height={28}
+                  width={35}
+                  height={35}
                   className="object-contain"
                 />
               </a>

@@ -26,13 +26,7 @@ export default function Hero() {
 
   // Profiles list
   const profiles = [
-    {
-      name: "Emily Jacobs",
-      role: "UX Designer",
-      location: "📍 Seattle, WA",
-      photo: "/photo.png",
-      video: "/video/UX designer.mp4",
-    },
+    
     {
       name: "HR Manager",
       role: "Human Resources",
@@ -60,6 +54,13 @@ export default function Hero() {
       location: "📍 Bengaluru, India",
       photo: "/Data Scientist Photo.png",
       video: "/video/Data Scientist.mp4",
+    },
+    {
+      name: "Emily Jacobs",
+      role: "UX Designer",
+      location: "📍 Seattle, WA",
+      photo: "/photo.png",
+      video: "/video/UX designer.mp4",
     },
   ];
 

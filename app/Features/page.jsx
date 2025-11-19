@@ -25,7 +25,7 @@ export default function FeaturesPage() {
       <Navbar />
 
       {/* Desktop Hero */}
-      <section className="hidden md:flex h-[400px] flex-row items-center justify-between px-6 md:px-20 py-10 bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-400 text-white">
+      <section className="hidden md:flex h-[400px] flex-row items-center justify-between px-6 md:px-20 py-10 bg-gradient-to-r from-blue-900 via-blue-900 to-cyan-400 text-white">
         <div className="md:w-1/2 space-y-6">
           <h1 className="text-5xl md:text-2xl font-extrabold leading-tight ">
             Powerful Features That Make Hiring Effortless.
@@ -38,9 +38,10 @@ export default function FeaturesPage() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-6">
-            <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition w-[200px] h-[52px] whitespace-nowrap">
-              See DigiHire in Action
-            </button>
+            <button className="bg-white border-2 border-blue-900 text-blue-900 font-bold px-8 py-3 rounded-full shadow-md hover:bg-blue-900 hover:text-white transition w-[200px] h-[52px] whitespace-nowrap flex items-center justify-center">
+  See DigiHire in Action
+</button>
+
 
             <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition w-[200px] h-[52px]">
               Start Free Trial
