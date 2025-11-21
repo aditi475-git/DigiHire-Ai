@@ -224,7 +224,7 @@ const [billingCycle, setBillingCycle] = useState("monthly");
     </div>
 
     {/* ✅ Added message with equal top/bottom spacing */}
-    <p className="text-lg font-bold italic text-blue-900 text-center my-4">
+    <p className="text-l font-bold italic text-blue-700 text-center my-4">
       Start your free 14-day trial today.
     </p>
   </div>

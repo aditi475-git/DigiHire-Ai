@@ -147,7 +147,7 @@ export default function AllFaqsPage() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center px-6 md:px-20 py-10 bg-blue-100 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-blue-100 opacity-20"></div>
         <div className="z-10 max-w-3xl">
           <h1 className="text-3xl md:text-2xl font-bold text-blue-900 mb-4">
             All Frequently Asked Questions

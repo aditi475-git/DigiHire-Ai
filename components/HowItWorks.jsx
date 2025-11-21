@@ -60,12 +60,12 @@ export default function HowItWorks() {
         {/* CTA */}
         <div className="mt-16">
  <div className="flex justify-center items-center w-full">
-  <a
+  {/* <a
     href="#demo"
     className="bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-full shadow-md transition flex items-center justify-center font-body w-[200px] h-[52px] text-center"
   >
     Watch Demo Video
-  </a>
+  </a> */}
 </div>
 
 

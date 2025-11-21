@@ -82,7 +82,7 @@ export default function FooterSection() {
 
           {/* ✅ SOCIAL MEDIA ICONS (Added exactly after Contact) */}
           <div className="flex items-center gap-4 mt-4">
-            <p className="font-semibold text-gray-300 whitespace-nowrap">
+            <p className=" text-gray-300 whitespace-nowrap">
               Follow us on:
             </p>
 

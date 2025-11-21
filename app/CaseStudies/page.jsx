@@ -138,7 +138,8 @@ export default function CaseStudiesPage() {
 {/* Desktop Section */}
 <section className="hidden md:flex h-[400px] flex-row items-center justify-between px-16 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
   {/* Background pattern */}
-  <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
+ <div className="absolute inset-0 bg-blue-100 opacity-20"></div>
+
 
   {/* Left Content */}
   <div className="z-10 max-w-2xl w-1/2 text-left flex flex-col justify-center">
@@ -173,7 +174,7 @@ export default function CaseStudiesPage() {
 {/* Mobile Section */}
 <section className="block md:hidden h-auto flex flex-col items-center justify-center px-6 py-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 relative overflow-hidden">
   {/* Background pattern */}
-  <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
+ <div className="absolute inset-0 bg-blue-100 opacity-20"></div>
 
   {/* Image First on Mobile */}
   <div className="z-10 flex justify-center w-full mb-6">

@@ -143,9 +143,20 @@ export default function Navbar({
 
       {/* ✅ Capsule Log In Button */}
       <div className="hidden md:flex justify-end">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-1 rounded-full shadow-md transition">
-          Log In
-        </button>
+        <li>
+  <Link href="/login">
+    <span>
+      <button
+        type="button"
+        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition"
+      >
+        Log In
+      </button>
+    </span>
+  </Link>
+</li>
+
+
       </div>
 
       {/* ✅ Mobile Menu Toggle */}
@@ -235,11 +246,19 @@ export default function Navbar({
             </li>
 
             {/* ✅ Capsule Log In for mobile also */}
-            <li>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition">
-                Log In
-              </button>
-            </li>
+           <li>
+  <Link href="/login">
+    <span>
+      <button
+        type="button"
+        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition"
+      >
+        Log In
+      </button>
+    </span>
+  </Link>
+</li>
+
           </ul>
         </div>
       )}

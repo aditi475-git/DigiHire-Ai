@@ -105,7 +105,7 @@ const handleBack = () => {
       {/* Desktop Section */}
 <section className="hidden md:flex flex-col md:flex-row items-center justify-center text-left px-20 bg-blue-100 relative overflow-hidden h-[400px]">
   {/* Background pattern */}
-  <div className="absolute inset-0 opacity-10 bg-[url('/graph-pattern.svg')] bg-cover bg-center"></div>
+<div className="absolute inset-0 bg-blue-100 opacity-20"></div>
 
   {/* Left content (text) */}
   <div className="z-10 max-w-2xl w-full md:w-1/2 text-left">
